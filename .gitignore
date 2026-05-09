@@ -1,0 +1,8 @@
+.DS_Store
+.obsidian/workspace*
+.obsidian/cache
+.obsidian/workspaces*
+.idea/
+.vscode/
+tmp/
+*.log
