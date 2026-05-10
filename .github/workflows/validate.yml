@@ -1,0 +1,106 @@
+name: Validate vault structure
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install starter into temp vault
+        run: |
+          mkdir /tmp/test-vault
+          bash bootstrap/install.sh /tmp/test-vault
+
+      - name: Check required folders exist
+        run: |
+          folders=(
+            contacts inbox journal meetings notes projects raw sources
+            tasks/open tasks/in-progress tasks/done
+            wiki/concepts wiki/summaries wiki/topics
+            templates ops/SOPs ops/Guidelines
+          )
+          failed=0
+          for folder in "${folders[@]}"; do
+            if [ ! -d "/tmp/test-vault/$folder" ]; then
+              echo "MISSING folder: $folder"
+              failed=1
+            else
+              echo "OK folder: $folder"
+            fi
+          done
+          exit $failed
+
+      - name: Check required files exist
+        run: |
+          files=(
+            CONTEXT.md
+            index.md
+            log.md
+            tasks/INDEX.md
+            wiki/concepts/ai-journal.md
+            templates/contact.md
+            templates/daily.md
+            templates/meeting.md
+            templates/note.md
+            templates/source.md
+            templates/summary.md
+            templates/task.md
+            templates/topic.md
+            ops/INDEX.md
+            ops/SYSTEM-ARCHITECTURE.md
+            ops/VAULT-OPERATIONS.md
+            ops/SOPs/SOP-001-ingest.md
+            ops/SOPs/SOP-002-journal-entry.md
+            ops/SOPs/SOP-003-new-contact.md
+            ops/SOPs/SOP-004-health-check.md
+            ops/SOPs/SOP-005-new-project.md
+            ops/SOPs/SOP-006-meeting-ingestion.md
+            ops/SOPs/SOP-007-task-create.md
+            ops/SOPs/SOP-008-task-claim.md
+            ops/SOPs/SOP-009-task-close.md
+            ops/Guidelines/GL-001-canonical-home-and-naming.md
+            ops/Guidelines/GL-002-vault-architecture-routing.md
+            ops/Guidelines/GL-003-wiki-page-schema.md
+          )
+          failed=0
+          for file in "${files[@]}"; do
+            if [ ! -f "/tmp/test-vault/$file" ]; then
+              echo "MISSING file: $file"
+              failed=1
+            else
+              echo "OK file: $file"
+            fi
+          done
+          exit $failed
+
+      - name: Check ops/INDEX.md references match actual SOP files
+        run: |
+          failed=0
+          while IFS= read -r sop; do
+            if [ ! -f "/tmp/test-vault/ops/SOPs/${sop}.md" ]; then
+              echo "BROKEN reference in ops/INDEX.md: $sop"
+              failed=1
+            else
+              echo "OK reference: $sop"
+            fi
+          done < <(grep -oP 'SOP-\d{3}-[\w-]+' /tmp/test-vault/ops/INDEX.md)
+          exit $failed
+
+      - name: Check no SOP files are empty
+        run: |
+          failed=0
+          for file in /tmp/test-vault/ops/SOPs/SOP-*.md; do
+            if [ ! -s "$file" ]; then
+              echo "EMPTY SOP: $(basename $file)"
+              failed=1
+            else
+              echo "OK SOP: $(basename $file)"
+            fi
+          done
+          exit $failed
