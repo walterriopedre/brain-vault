@@ -12,11 +12,15 @@ mkdir -p "$TARGET"/contacts
 mkdir -p "$TARGET"/inbox
 mkdir -p "$TARGET"/journal
 mkdir -p "$TARGET"/meetings
+mkdir -p "$TARGET"/notes
 mkdir -p "$TARGET"/ops/SOPs
 mkdir -p "$TARGET"/ops/Guidelines
 mkdir -p "$TARGET"/projects
 mkdir -p "$TARGET"/raw
 mkdir -p "$TARGET"/sources
+mkdir -p "$TARGET"/tasks/open
+mkdir -p "$TARGET"/tasks/in-progress
+mkdir -p "$TARGET"/tasks/done
 mkdir -p "$TARGET"/wiki/concepts
 mkdir -p "$TARGET"/wiki/summaries
 mkdir -p "$TARGET"/wiki/topics
@@ -44,6 +48,7 @@ copy_if_missing "$ROOT/templates/source.md" "$TARGET/templates/source.md"
 copy_if_missing "$ROOT/templates/summary.md" "$TARGET/templates/summary.md"
 copy_if_missing "$ROOT/templates/topic.md" "$TARGET/templates/topic.md"
 copy_if_missing "$ROOT/templates/tasks.md" "$TARGET/templates/tasks.md"
+copy_if_missing "$ROOT/templates/task.md" "$TARGET/templates/task.md"
 copy_if_missing "$ROOT/templates/decisions.md" "$TARGET/templates/decisions.md"
 copy_if_missing "$ROOT/ops/INDEX.md" "$TARGET/ops/INDEX.md"
 copy_if_missing "$ROOT/ops/SYSTEM-ARCHITECTURE.md" "$TARGET/ops/SYSTEM-ARCHITECTURE.md"
@@ -56,6 +61,9 @@ copy_if_missing "$ROOT/ops/SOPs/SOP-003-new-contact.md" "$TARGET/ops/SOPs/SOP-00
 copy_if_missing "$ROOT/ops/SOPs/SOP-004-health-check.md" "$TARGET/ops/SOPs/SOP-004-health-check.md"
 copy_if_missing "$ROOT/ops/SOPs/SOP-005-new-project.md" "$TARGET/ops/SOPs/SOP-005-new-project.md"
 copy_if_missing "$ROOT/ops/SOPs/SOP-006-meeting-ingestion.md" "$TARGET/ops/SOPs/SOP-006-meeting-ingestion.md"
+copy_if_missing "$ROOT/ops/SOPs/SOP-007-task-create.md" "$TARGET/ops/SOPs/SOP-007-task-create.md"
+copy_if_missing "$ROOT/ops/SOPs/SOP-008-task-claim.md" "$TARGET/ops/SOPs/SOP-008-task-claim.md"
+copy_if_missing "$ROOT/ops/SOPs/SOP-009-task-close.md" "$TARGET/ops/SOPs/SOP-009-task-close.md"
 copy_if_missing "$ROOT/ops/Guidelines/README.md" "$TARGET/ops/Guidelines/README.md"
 copy_if_missing "$ROOT/ops/Guidelines/GL-001-canonical-home-and-naming.md" "$TARGET/ops/Guidelines/GL-001-canonical-home-and-naming.md"
 copy_if_missing "$ROOT/ops/Guidelines/GL-002-vault-architecture-routing.md" "$TARGET/ops/Guidelines/GL-002-vault-architecture-routing.md"

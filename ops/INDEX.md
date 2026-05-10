@@ -32,6 +32,9 @@ This `ops/` layer is the vault's canonical operating system. Tool config files s
 - [[ops/SOPs/SOP-004-health-check]]
 - [[ops/SOPs/SOP-005-new-project]]
 - [[ops/SOPs/SOP-006-meeting-ingestion]]
+- [[ops/SOPs/SOP-007-task-create]]
+- [[ops/SOPs/SOP-008-task-claim]]
+- [[ops/SOPs/SOP-009-task-close]]
 
 ## Optional layers
 

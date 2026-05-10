@@ -20,6 +20,8 @@ Each durable fact has one canonical home. Other files may contain summaries, ind
 | Journal entry | `journal/YYYY/MM/YYYY-MM-DD HH-MM.md` |
 | Meeting note | `meetings/YYYY-MM-DD - Meeting Name.md` |
 | Project context | `projects/<project-name>/PROJECT_CONTEXT.md` |
+| Standalone task | `tasks/open\|in-progress\|done/tsk-YYYY-MM-DD-NNN.md` |
+| Note | `notes/<title>.md` |
 | SOP | `ops/SOPs/SOP-NNN-<slug>.md` |
 | Guideline | `ops/Guidelines/GL-NNN-<slug>.md` |
 
