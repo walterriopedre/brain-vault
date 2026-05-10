@@ -4,6 +4,14 @@ All notable changes to this starter are documented here.
 
 ---
 
+## [2026-05-10b] — Fix: ai-journal template and tasks/INDEX.md initial file
+
+- `templates/ai-journal.md` added — installed to `wiki/concepts/ai-journal.md` by `install.sh`; SOP-009 references this file on task close
+- `templates/tasks-index.md` added — installed to `tasks/INDEX.md` by `install.sh`; provides the starting structure for task tracking
+- `bootstrap/install.sh` updated to install both files into the correct vault locations
+
+---
+
 ## [2026-05-10] — Task management system and tool-independence principle
 
 ### Inspired by
