@@ -1,37 +1,29 @@
 # System Architecture
 
-This vault implements a local-first knowledge system built around plain markdown files inside Obsidian.
+This vault implements a local-first knowledge system built around plain markdown files.
 
-## Core idea
+## Core truth
 
-The vault is the durable system of record. Assistants help maintain, retrieve, and synthesize knowledge, but the knowledge itself stays in files you own.
+- The **vault** is the primary durable knowledge base.
+- AI tools are interchangeable operators — the rules live in vault files, not tool configs.
+- `raw/` is immutable after ingest.
 
-## Core layers
+## Ownership model
 
-1. Vault layer
-   - journal
-   - projects
-   - wiki-style knowledge pages
-   - contacts
-   - sources
-   - raw captures
+### 1. Vault
+The vault owns durable human-readable knowledge:
+- `wiki/summaries/`
+- `wiki/concepts/`
+- `wiki/topics/`
+- `contacts/`
+- `sources/`
+- `books/`
+- `journal/`
+- `meetings/`
+- `projects/`
 
-2. Operations layer
-   - `ops/INDEX.md`
-   - SOPs
-   - Guidelines
-   - operating references
-
-3. Template layer
-   - reusable note templates
-   - example files
-   - bootstrap scaffolding
-
-4. Optional automation layer
-   - cron jobs
-   - local scripts
-   - assistant runtimes
-   - external connectors
+### 2. Optional automation layer
+An external runtime (scripts, cron, AI agents) may orchestrate automation, but all durable knowledge ends up back in the vault.
 
 ## Recommended vault structure
 
@@ -40,16 +32,20 @@ contacts/
 inbox/
 journal/YYYY/MM/
 meetings/
-ops/
+notes/
+books/
 projects/<project-name>/
 raw/
 sources/
+tasks/
 templates/
 wiki/concepts/
 wiki/summaries/
 wiki/topics/
-index.md
+AGENTS.md
+CODEX.md          ← or adapter for whichever AI tool you use
 CONTEXT.md
+index.md
 log.md
 ```
 
@@ -57,33 +53,65 @@ log.md
 
 ```text
 projects/<project-name>/
-  PROJECT_CONTEXT.md
-  DECISIONS.md
-  TASKS.md
-  NOTES.md
-  ARTIFACTS/
+  PROJECT_CONTEXT.md   ← high-churn: current state, goals, blockers
+  DECISIONS.md         ← low-churn: meaningful decisions and rationale
+  TASKS.md             ← vault-local tasks
+  NOTES.md             ← supporting notes
+  ARTIFACTS/           ← outputs created by you or the AI
 ```
 
-## Durability rules
+## Input routing
 
-- Raw captures are preserved and treated as immutable.
-- Durable facts should have one canonical home.
-- Prefer additive changes over destructive cleanup.
-- Use links instead of copying the same fact everywhere.
-- Keep the vault understandable without requiring one specific AI tool.
+Route new inputs before writing anything.
+
+- **External source** → `raw/` + `wiki/summaries/`
+- **Book / reading note** → `books/` + promote durable ideas to `wiki/concepts/` or `wiki/topics/`
+- **YouTube/video** → `raw/videos/` + `wiki/summaries/`
+- **Personal event / reflection** → `journal/`
+- **Unclassified quick capture** → `inbox/`
+- **Project state / project work** → `projects/<project>/`
+- **Durable idea or framework** → `wiki/concepts/`
+- **Multi-source synthesis** → `wiki/topics/`
+
+## Two-speed knowledge model
+
+### High-churn notes
+Can be updated aggressively:
+- `journal/`
+- `meetings/`
+- `wiki/summaries/`
+- `books/`
+- `projects/*/PROJECT_CONTEXT.md`
+- `projects/*/TASKS.md`
+- `inbox/`
+
+### Low-churn notes
+Update carefully:
+- `wiki/concepts/`
+- `wiki/topics/`
+- `sources/`
+- `contacts/`
+- `projects/*/DECISIONS.md`
+
+If a low-churn page might need a risky rewrite, stage the finding first under `wiki/reviews/`.
+
+## Contradiction and synthesis staging
+
+Use `wiki/reviews/` for:
+- contradictions that need review
+- stale claims/pages
+- synthesis candidates discovered across sources
+
+Do not silently rewrite canonical pages when confidence is low.
+
+## Migration policy
+
+- Add first, migrate second, retire last.
+- Prefer creating new structured homes before moving old files.
+- Do not do broad renames or mass moves without explicit approval.
 
 ## AI-tool independence
 
-The system should work with any assistant that can:
-- read files
-- write files
-- follow instructions
-- avoid destructive behavior
+The system should work with any assistant that can read files and write files. Adapters should stay thin — a few lines pointing to `AGENTS.md`. The operating logic belongs in vault files, not vendor-specific memory or config.
 
-Adapters should stay thin. The operating logic belongs in vault files, not vendor-specific memory or config.
-
-## Obsidian CLI
-
-The Obsidian CLI is optional but recommended for vault interaction. It keeps Obsidian's graph, metadata cache, and search indexes consistent. Plain file writes still work as a fallback.
-
-See [[ops/OBSIDIAN-CLI]] for the command reference.
+See `AGENTS.md` for operating rules and `ops/VAULT-OPERATIONS.md` for the intent routing layer.

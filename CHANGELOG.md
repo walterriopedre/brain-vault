@@ -4,6 +4,39 @@ All notable changes to this starter are documented here.
 
 ---
 
+## [2026-05-30] — AGENTS.md pattern, Codex adapter, richer ops, new templates
+
+### Added
+
+**`AGENTS.md`** — master vault coordinator file installed at vault root by `install.sh`
+The new primary runtime file for any AI tool operating the vault. Consolidates identity, mandate, routing, operating rules, workflows, and file formats into one tool-agnostic document. Replaces the need to read scattered ops/ files at session start.
+
+**`CODEX.md`** — ChatGPT Codex adapter at vault root
+3-line adapter that points Codex to `AGENTS.md` and `CONTEXT.md`. Same pattern works for any tool.
+
+**Four new templates**
+- `concept.md` — structured mental model / framework page with status, confidence, and anti-patterns
+- `engineering-incident.md` — incident log with timeline, diagnosis, solution, and reusable lesson
+- `engineering-solution.md` — validated solution page with preconditions, steps, rollback, and limitations
+- `inbox-note.md` — quick capture with triage notes and possible destinations
+
+**New vault folders** created by `install.sh`
+- `books/` — reading notes and book summaries (promotes durable ideas to `wiki/concepts/`)
+- `raw/videos/` — YouTube and video captures
+- `wiki/reviews/` — contradiction staging, stale pages, synthesis candidates
+
+### Changed
+
+**`ops/VAULT-OPERATIONS.md`** — rewritten with full per-operation detail
+Each of the 10 operations now has: use-when, what-it-does, and examples. Routing priority rules and style notes added.
+
+**`ops/SYSTEM-ARCHITECTURE.md`** — updated with evolved architecture
+Adds `books/`, `wiki/reviews/`, two-speed model table, contradiction staging section, and migration policy. Clarifies that `AGENTS.md` is the runtime entry point.
+
+**`bootstrap/install.sh`** — updated to install AGENTS.md, CODEX.md, and new templates
+
+---
+
 ## [2026-05-10b] — Fix: ai-journal template and tasks/INDEX.md initial file
 
 - `templates/ai-journal.md` added — installed to `wiki/concepts/ai-journal.md` by `install.sh`; SOP-009 references this file on task close

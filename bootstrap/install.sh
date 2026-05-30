@@ -8,6 +8,7 @@ fi
 
 TARGET="$1"
 
+mkdir -p "$TARGET"/books
 mkdir -p "$TARGET"/contacts
 mkdir -p "$TARGET"/inbox
 mkdir -p "$TARGET"/journal
@@ -16,12 +17,13 @@ mkdir -p "$TARGET"/notes
 mkdir -p "$TARGET"/ops/SOPs
 mkdir -p "$TARGET"/ops/Guidelines
 mkdir -p "$TARGET"/projects
-mkdir -p "$TARGET"/raw
+mkdir -p "$TARGET"/raw/videos
 mkdir -p "$TARGET"/sources
 mkdir -p "$TARGET"/tasks/open
 mkdir -p "$TARGET"/tasks/in-progress
 mkdir -p "$TARGET"/tasks/done
 mkdir -p "$TARGET"/wiki/concepts
+mkdir -p "$TARGET"/wiki/reviews
 mkdir -p "$TARGET"/wiki/summaries
 mkdir -p "$TARGET"/wiki/topics
 mkdir -p "$TARGET"/templates
@@ -52,6 +54,12 @@ copy_if_missing "$ROOT/templates/task.md" "$TARGET/templates/task.md"
 copy_if_missing "$ROOT/templates/ai-journal.md" "$TARGET/wiki/concepts/ai-journal.md"
 copy_if_missing "$ROOT/templates/tasks-index.md" "$TARGET/tasks/INDEX.md"
 copy_if_missing "$ROOT/templates/decisions.md" "$TARGET/templates/decisions.md"
+copy_if_missing "$ROOT/templates/concept.md" "$TARGET/templates/concept.md"
+copy_if_missing "$ROOT/templates/engineering-incident.md" "$TARGET/templates/engineering-incident.md"
+copy_if_missing "$ROOT/templates/engineering-solution.md" "$TARGET/templates/engineering-solution.md"
+copy_if_missing "$ROOT/templates/inbox-note.md" "$TARGET/templates/inbox-note.md"
+copy_if_missing "$ROOT/AGENTS.md" "$TARGET/AGENTS.md"
+copy_if_missing "$ROOT/CODEX.md" "$TARGET/CODEX.md"
 copy_if_missing "$ROOT/ops/INDEX.md" "$TARGET/ops/INDEX.md"
 copy_if_missing "$ROOT/ops/SYSTEM-ARCHITECTURE.md" "$TARGET/ops/SYSTEM-ARCHITECTURE.md"
 copy_if_missing "$ROOT/ops/VAULT-OPERATIONS.md" "$TARGET/ops/VAULT-OPERATIONS.md"
