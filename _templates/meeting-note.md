@@ -9,7 +9,7 @@ tags: [meeting]
 
 ## Attendees
 
-- [[people/Name|Name]] (role / org)
+- [[business/people/Name|Name]] (role / org)
 
 ## Context
 

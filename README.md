@@ -1,58 +1,102 @@
-# [Team Name] Brain
+# Brain Vault
 
-Shared knowledge base for the [Team] team. Everything here — active work, procedures,
-daily activity, and accumulated knowledge — lives as plain markdown in git so it's readable
-by both the team and our AI agent.
+Brain Vault is a public-safe starter repository for building a local-first Markdown knowledge
+system that humans and AI assistants can both use.
 
-**The folder is the asset. Obsidian is the human editor. Git is the audit trail.**
+Use it for personal life, business work, or a clearly separated mix of both. The vault keeps
+projects, tasks, notes, runbooks, decisions, lessons learned, and AI operating instructions in
+plain files you own.
 
----
-
-## What this repository is — and is not
-
-This vault is for **[ORGANIZATION] work only**: projects, tasks, procedures, decisions,
-team knowledge, and operational context.
-
-It is not a personal journal, personal-life organizer, or secrets manager. Each user may
-create a local `_private/` folder for scratch notes and draft thinking — that folder is
-gitignored and never pushed to the shared repository.
-
-For personal use outside work, use the public personal version of this framework:
-**https://github.com/walterriopedre/brain-vault**
+**The folder is the asset. Markdown is the format. Git is the history. AI is an optional
+working partner.**
 
 ---
 
-## Quick start
+## What This Repository Is
 
-See `QUICKSTART.md` for the 5-step version, or `INSTALL.md` for the full setup guide.
+Brain Vault is:
+
+- A practical folder structure for organizing durable knowledge.
+- A public template with fake examples only.
+- A local-first workspace that works with Obsidian, VS Code, Claude Code, Codex, ChatGPT, or
+  any tool that can read files.
+- A way to make AI assistance less repetitive by giving it stable context.
+- A system you can adapt for an individual, household, founder, team, department, or small
+  business.
+
+Brain Vault is not:
+
+- A secrets manager.
+- A replacement for official systems of record.
+- A place to publish private personal, customer, employee, legal, medical, financial, or regulated
+  data.
+- Locked to one AI vendor or one note-taking app.
+
+---
+
+## Choose a Mode
+
+Most users should start with one of these modes:
+
+| Mode | Best for | Start here |
+|------|----------|------------|
+| Personal | Projects, learning, routines, household admin, creative work | `docs/personal-vault-guide.md` |
+| Business | Team context, runbooks, decisions, project notes, operating knowledge | `docs/business-vault-guide.md` |
+| Shared | Reusable knowledge that belongs in both modes | `shared/README.md` |
+
+You can use one mode only, or keep personal and business material separated inside the same
+private clone. If this repository is public, keep only templates, documentation, and fake examples
+here.
 
 ---
 
 ## Layout
 
+```text
+brain-vault/
+├── personal/        Personal projects, tasks, routines, notes
+├── business/        Optional business-mode notes and guides
+├── shared/          Reusable patterns that can serve either mode
+├── ai/              AI usage notes that are not tied to one vendor
+├── examples/        Fake examples only
+├── templates/       Public-facing templates for new notes
+├── docs/            Guides, FAQ, security, customization, migration notes
+├── shared/knowledge/    Durable knowledge: systems, decisions, solutions, concepts
+├── business/projects/   One folder per initiative
+├── business/tasks/      Flat task store: open, in-progress, done, cancelled
+├── business/work-logs/  Daily or session-based activity logs
+├── business/meetings/   Meeting notes and decision records
+├── business/inbox/      Raw notes waiting to be sorted
+├── business/runbooks/   Step-by-step procedures
+├── business/people/     Contact and stakeholder notes
+├── business/organizations/ Organization notes
+├── _claude/         Claude Code-compatible config and skills
+├── _templates/      Legacy Claude-compatible templates
+├── archive/         Completed or retired material
+└── _private/        Local-only notes, ignored by Git
 ```
-vault/
-├── docs/            Human-readable guides — how this works, security, onboarding
-├── knowledge/       Team expertise: systems, decisions, solutions, concepts
-├── projects/        One folder per initiative
-├── tasks/           Flat task store: open/ · in-progress/ · done/ · cancelled/
-├── work-logs/       One dated file per day
-├── meetings/        Work-related meeting notes
-├── inbox/           Raw signals awaiting triage
-├── runbooks/        Step-by-step procedures
-├── people/          Internal and external contacts — one note per person
-├── organizations/   Companies and teams relevant to work
-├── _templates/      Starting points — copy, don't edit in place
-├── archive/         Completed and retired material
-├── _private/        Local only — gitignored, created by each user if needed
-└── gotchas.md       Append-only log of failures, surprises, and dead ends
-```
+
+The legacy business-oriented root work folders now live under `business/`, while durable reusable
+knowledge lives under `shared/knowledge/`.
 
 ---
 
-## The one rule
+## Quick Start
 
-**The vault must be self-contained.** Every configuration, every rule, every AI instruction
-lives in this folder — not in the AI app's settings, not in a cloud account, not in someone's
-memory. If you hand this folder to someone new, or switch to a different AI model, the system
-works exactly the same way with no additional setup.
+Read `QUICKSTART.md` for the short setup path.
+
+For the full walkthrough, read `INSTALL.md`, then choose:
+
+- `docs/personal-vault-guide.md` for an individual vault.
+- `docs/business-vault-guide.md` for a work or team vault.
+- `docs/ai-usage-guide.md` for using the vault with AI assistants.
+
+---
+
+## Public-Safe Rule
+
+This repository should stay safe to publish. Use fake examples in the public template. Put real
+personal, business, customer, employee, financial, medical, legal, or regulated information only
+in a private clone with the right access controls.
+
+Never commit secrets. Store references to approved secure systems, not secret values.

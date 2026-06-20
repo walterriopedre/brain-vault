@@ -2,7 +2,7 @@
 type: system
 name: [System or process name]
 description: [One sentence — what this system is and what it does]
-owner: [[crm/people/Name|Name]]
+owner: [[business/people/Name|Name]]
 last_reviewed: YYYY-MM-DD
 timestamp: YYYY-MM-DDT00:00:00Z
 status: active
@@ -17,7 +17,7 @@ tags: []
 
 ## Owner
 
-[[crm/people/Name|Name]] — [their role in relation to this system]
+[[business/people/Name|Name]] - [their role in relation to this system]
 
 ## How it works
 
@@ -25,7 +25,7 @@ tags: []
 
 ## Runbooks
 
-- [[runbooks/relevant-runbook|Relevant runbook]]
+- [[business/runbooks/relevant-runbook|Relevant runbook]]
 
 ## Known issues / gotchas
 
@@ -33,12 +33,13 @@ tags: []
 
 ## Related
 
-<!-- Inter-knowledge links (within knowledge/) → standard markdown -->
-<!-- - System: [Related system](/knowledge/systems/related-system.md) -->
-<!-- - Decision: [Relevant decision](/knowledge/decisions/relevant-decision.md) -->
+<!-- Inter-knowledge links (within shared/knowledge/) → standard markdown -->
+<!-- Placeholder examples; replace <...> with real files before saving. -->
+<!-- - System: [Related system](/shared/knowledge/systems/<system-slug>.md) -->
+<!-- - Decision: [Relevant decision](/shared/knowledge/decisions/<decision-slug>.md) -->
 
-<!-- Vault-external links (projects/, crm/, runbooks/) → wikilinks -->
-<!-- - Project: [[projects/.../PROJECT_CONTEXT|Project Name]] -->
+<!-- Vault-external links (business/projects/, business/people/, business/organizations/, business/runbooks/) → wikilinks -->
+<!-- - Project: [[business/projects/.../PROJECT_CONTEXT|Project Name]] -->
 <!-- - Owner: [[Person_Name|Person Name]] -->
 
 ## Change log

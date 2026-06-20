@@ -160,7 +160,8 @@ On approval:
 2. Write the approved content to `_claude/skills/[skill-name]/SKILL.md`
 3. Read `_claude/skills/README.md`
 4. Add the new skill to the included skills table:
-   `| [Skill Name](skill-name/SKILL.md) | [trigger] | [model] | [one-line description] |`
+   `| Skill Name | trigger | model | one-line description |`
+   Use a real relative link to `<skill-name>/SKILL.md` after the folder exists.
 5. Write the updated README back
 
 Confirm:

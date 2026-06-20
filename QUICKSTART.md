@@ -1,49 +1,83 @@
 # Quickstart
 
-Five steps to a working vault.
+Five steps to a working Brain Vault.
 
 ---
 
-## 1. Clone
+## 1. Clone or Copy the Repository
 
 ```bash
 git clone <repository-url>
 cd <repository-folder>
 ```
 
-## 2. Open in Obsidian
-
-Open this folder as an Obsidian vault. (Optional but recommended for human navigation and graph view.)
-
-## 3. Open Claude Code
-
-Open a Claude Code session pointed at this folder.
-
-## 4. Run the setup ritual
-
-Say:
-
-> "I'm setting up this vault for the first time. Run the setup ritual."
-
-Claude will read `INSTALL.md`, walk you through filling in `AGENTS.md` with your team's
-details, and help you configure your first skill and scheduled task.
-
-## 5. Create your local private area (optional)
-
-Create a `_private/` folder in the vault root. It is gitignored — use it for local
-scratch notes, draft thinking, and 1-on-1 preparation. Do not store secrets there.
+If you are creating a real vault with private information, use a private repository or a local
+folder that you do not publish.
 
 ---
 
-## What this vault is for
+## 2. Choose Your Vault Mode
 
-**[ORGANIZATION] work only** — projects, tasks, procedures, decisions, meeting notes,
-and team knowledge.
+Pick the mode that matches your use case:
 
-For personal use outside work, use the public personal version of this framework:
-**https://github.com/walterriopedre/brain-vault**
+- **Personal:** personal projects, learning, routines, creative work, household admin.
+- **Business:** team work, client-safe context, procedures, decisions, project notes.
+- **Shared:** reusable knowledge and templates that fit either mode.
+
+Read the matching guide:
+
+- `docs/personal-vault-guide.md`
+- `docs/business-vault-guide.md`
+- `docs/how-this-works.md`
 
 ---
 
-See `INSTALL.md` for the full setup guide, or `docs/how-this-repository-works.md` for
-a plain-language explanation of how everything fits together.
+## 3. Open the Folder in Your Editor
+
+Recommended human editors:
+
+- Obsidian, for notes and backlinks.
+- VS Code or another text editor, for direct file editing.
+
+Open the repository folder itself as the vault. The folder is the source of truth.
+
+---
+
+## 4. Set Up AI Assistance
+
+If you use Claude Code, Codex, ChatGPT, or another file-aware AI assistant, point it at this
+folder and ask it to read:
+
+- `AGENTS.md`
+- `CLAUDE.md` if using Claude Code
+- `docs/ai-usage-guide.md`
+
+The AI should treat this as a public-safe Brain Vault template unless you explicitly configure
+your private clone differently.
+
+---
+
+## 5. Create Your Local Private Area
+
+Create `_private/` if you want local scratch notes that never get committed.
+
+```bash
+mkdir _private
+```
+
+Use `_private/` for temporary thinking and drafts. Do not use it for passwords, API keys,
+regulated data, or anything that requires a real secrets manager or official system of record.
+
+---
+
+## What To Do First
+
+Start small:
+
+1. Copy a template from `templates/`.
+2. Create one personal project in `personal/projects/` or one business project in `business/projects/`.
+3. Add one personal task in `personal/tasks/` or one business task in `business/tasks/open/`.
+4. Capture one reusable lesson in `shared/knowledge/`.
+5. For business sessions, write one short log in `business/work-logs/`.
+
+Fake examples live in `examples/`. They are safe to copy, adapt, or delete.

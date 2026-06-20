@@ -2,74 +2,63 @@
 
 ## What this repo is
 
-A git-backed knowledge vault managed by an AI agent — the team's primary operational tool
-for knowledge capture, project tracking, and day-to-day work. Not a software project.
-No build system, test suite, or package manager.
+Brain Vault is a git-backed Markdown knowledge vault. It can be used for personal knowledge,
+business operating knowledge, or a separated mix of both.
 
-**Configure these fields after cloning:**
-- Owner: [Your name and email]
-- Team: [Team name]
-- Organization: [Organization name]
+This public repository is a template. It should contain documentation, templates, and fake
+examples only. Real personal or business content belongs in a private clone with appropriate
+access controls.
+
+**Configure these fields in a private clone if useful:**
+
+- Owner:
+- Vault mode: personal | business | mixed
+- Intended audience:
 
 ---
 
-## ⚠️ Where to save Claude state
+## Where to save AI state
 
-**Save everything inside this vault — never in the Claude app folder.**
-
-The Claude app folder is ephemeral and can be wiped. The vault is the single source of truth.
+Save project-specific AI state inside this vault, not in an app-specific hidden folder outside the
+repository.
 
 - Memory: `_claude/memory/`
 - Memory index: `_claude/MEMORY.md`
 - Scheduled task prompts: `_claude/scheduled-tasks/`
 
+The vault should remain portable across tools.
+
 ---
 
-## ⚠️ Vault first — check internal knowledge before going outside
+## Vault first
 
-**Before searching the web, calling an external tool, or reasoning from training data,
-check the vault.** The vault contains team-specific, context-specific knowledge. Generic
-sources do not.
+Before searching the web, calling an external tool, or reasoning from memory, check the vault when
+the topic is likely to have local context.
 
 Check in this order:
-1. `knowledge/index.md` — read it first on any knowledge query. Drill into the relevant page.
-2. `runbooks/` — if the task is operational, a procedure may already exist.
-3. `gotchas.md` — if the task touches a domain the team has worked in, check for prior failures.
-4. Recent `work-logs/` — if this topic was active in the last two weeks, check if it was resolved.
 
-External research fills genuine gaps. It does not replace what the team already knows.
+1. `shared/knowledge/index.md` for durable knowledge.
+2. `business/runbooks/` for procedures.
+3. `shared/gotchas.md` for prior failures and surprises.
+4. Recent `business/work-logs/` if the topic was active recently.
 
----
-
-## ⚠️ Prefer the cheapest tool that gets the job done
-
-**Use the least expensive tool that produces a correct result.** This applies to both how
-you accomplish tasks and which model you use.
-
-**For technical teams (engineering, infrastructure, DevOps):**
-- CLI and shell commands before MCP server calls — shell doesn't consume model tokens.
-- File reads and structured queries before model reasoning.
-- Azure, GCP, AWS → use the native CLI. Never use a cloud MCP server when a CLI command works.
-
-**For non-technical teams (legal, sales, marketing, operations):**
-- Read vault files directly before asking the model to recall or summarize them.
-- Batch related reads into one pass rather than file-by-file calls.
-- Avoid re-reading files already in context during the same session.
-
-**Model selection — the universal rule:**
-- Start with the lightest model sufficient for the task.
-- Escalate when: the task is genuinely complex (multi-document reasoning, high-stakes output),
-  OR the same step has already failed 2 or more times — a more capable model is cheaper than
-  a third failed attempt.
-- Never use the most capable model by default. See `_claude/config/model-selection.md`.
+External research fills gaps. It does not replace local context.
 
 ---
 
-## ⚠️ AI-tool independence is non-negotiable
+## Use the cheapest reliable tool
 
-Every piece of configuration and instruction must be written into this vault. Nothing goes
-into the AI app's settings, a cloud account, or any path outside this folder. The vault
-must be fully portable — operable with any AI tool or none at all.
+Use simple file reads, search, scripts, and structured queries before expensive or broad AI calls.
 
-If you hand this folder to someone new, or switch to a different AI model, the system
-must work exactly the same way with no additional setup.
+Escalate model capability only when the task is complex, high-stakes, or has failed repeatedly.
+See `_claude/config/model-selection.md`.
+
+---
+
+## AI-tool independence
+
+Every durable instruction and configuration should live in this vault. Do not rely on one AI app's
+settings as the only place a rule exists.
+
+If someone opens the folder with a different AI tool, the operating model should still be
+understandable from the files.

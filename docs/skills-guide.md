@@ -258,29 +258,26 @@ skill registries for existing implementations.
 
 ## Recommended first adoption package
 
-When introducing Team Brain to a new team, start with only:
+When introducing Brain Vault to a new person or team, start with only:
 
 1. `README.md`
-2. `docs/how-this-repository-works.md`
-3. `docs/adoption-faq.md`
-4. `docs/department-use-cases.md`
+2. `docs/how-this-works.md`
+3. `docs/faq.md`
+4. `docs/use-case-catalog.md`
 5. `docs/skills-guide.md`
-6. `docs/private-local-area.md`
+6. `docs/local-private-notes.md`
 7. `QUICKSTART.md`
 
-Add department-specific skills only when a department expresses a real need.
+Add personal or business-specific skills only when repeated use proves a real need.
 
 ---
 
 ## Recommended message to departments
 
-> Team Brain is a lightweight way for each team to preserve working knowledge and give AI tools
-> useful context. Each department can customize it to its own needs while keeping shared safety
-> rules: no secrets, no regulated data unless approved, human review for consequential decisions,
-> and clear separation between work and personal vaults.
+> Brain Vault is a lightweight way to preserve working knowledge and give AI tools useful context.
+> Individuals and teams can customize it to their own needs while keeping shared safety rules:
+> no secrets, no sensitive data in public, human review for consequential decisions, and clear
+> boundaries between personal, business, and shared material.
 >
 > Start small. Use it for real work. Capture what helps. Ignore what does not. Let the repository
 > evolve from actual practice.
-
-For personal use of this framework outside work:
-https://github.com/walterriopedre/brain-vault

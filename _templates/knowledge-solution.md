@@ -12,7 +12,7 @@ tags: []
 
 ## Symptom
 
-[What the user/team observes. How to reproduce or recognize it. Error messages if any.]
+[What someone observes. How to reproduce or recognize it. Error messages if any.]
 
 ## Root cause
 
@@ -32,10 +32,10 @@ tags: []
 
 ## Related
 
-<!-- Inter-knowledge links (within knowledge/) → standard markdown -->
-<!-- - System: [Affected system](/knowledge/systems/system-name.md) -->
-<!-- - Concept: [Underlying concept](/knowledge/concepts/concept-name.md) -->
+<!-- Inter-knowledge links (within shared/knowledge/) → standard markdown -->
+<!-- - System: [Affected system](/shared/knowledge/systems/system-name.md) -->
+<!-- - Concept: [Underlying concept](/shared/knowledge/concepts/concept-name.md) -->
 
 <!-- Vault-external links → wikilinks -->
-<!-- - Work log: [[work-logs/YYYY-MM-DD|YYYY-MM-DD]] -->
-<!-- - Runbook: [[runbooks/runbook-name|Runbook Name]] -->
+<!-- - Work log: [[business/work-logs/YYYY-MM-DD|YYYY-MM-DD]] -->
+<!-- - Runbook: [[business/runbooks/runbook-name|Runbook Name]] -->

@@ -15,21 +15,21 @@ tags: []
 
 [Generic definition — brief, enough context to understand the gotchas below.]
 
-## In this tenant / team-specific behavior
+## Local behavior
 
-[The reason this page exists: what behaves differently here than the docs say, what's configured specifically for this team, what the team has decided about this concept.]
+[The reason this page exists: what behaves differently here than the docs say, what's configured locally, or what has been decided about this concept.]
 
 ## Gotchas
 
-[Things that bit the team. Non-obvious behavior. Things that would surprise a reader who just read the docs.]
+[Things that caused trouble. Non-obvious behavior. Things that would surprise a reader who just read the docs.]
 
 - **[Gotcha title]** — [one sentence description]
 
 ## Related
 
-<!-- Inter-knowledge links (within knowledge/) → standard markdown -->
-<!-- - System: [System that uses this concept](/knowledge/systems/system-name.md) -->
-<!-- - Decision: [Decision driven by this concept](/knowledge/decisions/decision-name.md) -->
+<!-- Inter-knowledge links (within shared/knowledge/) → standard markdown -->
+<!-- - System: [System that uses this concept](/shared/knowledge/systems/system-name.md) -->
+<!-- - Decision: [Decision driven by this concept](/shared/knowledge/decisions/decision-name.md) -->
 
 <!-- Vault-external links → wikilinks -->
-<!-- - Project: [[projects/.../PROJECT_CONTEXT|Project Name]] -->
+<!-- - Project: [[business/projects/.../PROJECT_CONTEXT|Project Name]] -->

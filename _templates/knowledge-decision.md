@@ -33,10 +33,10 @@ tags: []
 
 ## Related
 
-<!-- Inter-knowledge links (within knowledge/) → standard markdown -->
-<!-- - System: [System name](/knowledge/systems/system-name.md) -->
-<!-- - Concept: [Concept name](/knowledge/concepts/concept-name.md) -->
+<!-- Inter-knowledge links (within shared/knowledge/) → standard markdown -->
+<!-- - System: [System name](/shared/knowledge/systems/system-name.md) -->
+<!-- - Concept: [Concept name](/shared/knowledge/concepts/concept-name.md) -->
 
-<!-- Vault-external links (projects/, crm/, runbooks/) → wikilinks -->
-<!-- - Project context: [[projects/.../PROJECT_CONTEXT|Project Name]] -->
+<!-- Vault-external links (business/projects/, business/people/, business/organizations/, business/runbooks/) → wikilinks -->
+<!-- - Project context: [[business/projects/.../PROJECT_CONTEXT|Project Name]] -->
 <!-- - Decider: [[Person_Name|Person Name]] -->

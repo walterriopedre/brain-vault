@@ -7,14 +7,18 @@ all related resources before Claude finishes.** This is a hard rule — not opti
 
 ### What must be linked
 
-- People mentioned by name → `[[crm/people/Jane_Smith|Jane Smith]]`
-- Projects referenced → `[[projects/my-project/README|My Project]]`
-- Runbooks cited → `[[runbooks/my-runbook|my-runbook]]`
-- Sources (emails, meetings, reports) → `[[inbox/source-file|Source]]`
-- Organizations → `[[crm/organizations/Acme_Corp|Acme Corp]]`
+The examples below are placeholder patterns. Replace every `<...>` segment with a real file path
+before saving a note.
+
+- People mentioned by name → `[[business/people/<person-file>|<Person Name>]]`
+- Projects referenced → `[[business/projects/<project-slug>/README|<Project Name>]]`
+- Runbooks cited → `[[business/runbooks/<runbook-file>|<Runbook Name>]]`
+- Sources (emails, meetings, reports) → `[[business/inbox/<source-file>|<Source Name>]]`
+- Organizations → `[[business/organizations/<organization-file>|<Organization Name>]]`
 
 ### Before finalizing any write
 
-Scan the file for all named entities and wrap each with `[[filename|display text]]`.
+Scan the file for all named entities and wrap each with an Obsidian wikilink in the form
+`[[<path>|<display text>]]`.
 If a contact or project page doesn't exist yet, create it first, then link.
 Unlinked references are dead ends in the Obsidian graph.

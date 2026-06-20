@@ -2,49 +2,53 @@
 
 ## Folder layout
 
-```
+```text
 vault/
-├── docs/            # Human-readable guides — how this works, security, onboarding
-├── knowledge/       # LLM-maintained knowledge layer (systems, decisions, solutions, concepts)
-├── projects/        # Active projects (one subfolder per initiative)
-├── tasks/           # Flat task store: open/ · in-progress/ · done/ · cancelled/
-├── work-logs/       # Daily activity log (one file per day, YYYY-MM-DD.md)
-├── meetings/        # Work-related meeting notes
-├── inbox/           # Raw intake — emails, articles, notes for Claude to process
-├── runbooks/        # Step-by-step operational procedures
-├── people/          # Internal and external contacts — one note per person
-├── organizations/   # Companies and teams relevant to work
-├── _templates/      # Starting points — copy when creating something new
+├── personal/        # Optional personal-mode notes and guidance
+├── business/        # Optional business-mode notes and guidance
+├── shared/          # Reusable patterns for either mode
+├── ai/              # AI usage guidance independent of one vendor
+├── examples/        # Fake examples only
+├── templates/       # Public-facing starter templates
+├── docs/            # Human-readable guides
+├── shared/knowledge/    # Durable systems, decisions, solutions, concepts
+├── business/projects/   # Active projects
+├── business/tasks/      # Flat task store: open, in-progress, done, cancelled
+├── business/work-logs/  # Daily or session logs
+├── business/meetings/   # Meeting notes
+├── business/inbox/      # Raw intake for later triage
+├── business/runbooks/   # Step-by-step procedures
+├── business/people/     # Contact and stakeholder notes
+├── business/organizations/ # Organization notes
+├── _claude/         # Claude Code-compatible config and skills
+├── _templates/      # Legacy Claude-compatible templates
 ├── archive/         # Completed or retired material
-└── _private/        # Local only — gitignored, created by each user if needed
+└── _private/        # Local only, gitignored
 ```
 
-## Work-only boundary
+## Public template boundary
 
-This vault is for work content only. Do not add personal-life folders or content.
-For personal use, use the public personal version: https://github.com/walterriopedre/brain-vault
+This repository should remain public-safe. Use fake examples only. Do not add real personal,
+business, customer, employee, legal, medical, financial, regulated, or secret information.
 
 ## Projects
 
-Each project folder contains a `README.md`, and optionally `scripts/`, `data/`,
-`deliverables/`, and `communications/`. A project moves to `archive/` (prefixed with
-`YYYY-MM-`) when fully done.
+Each project folder should contain a `README.md` or equivalent project context file. A project may
+also contain notes, scripts, deliverables, or supporting materials if appropriate for the vault.
 
 ## Work logs
 
-Every work session produces a `work-logs/YYYY-MM-DD.md` entry. Mandatory structure:
-- Narrative grouped by project or theme
-- `## Follow-ups` for open items
-- `## Changes` table at the end — the audit trail for what changed that day
+Use `business/work-logs/YYYY-MM-DD.md` for daily or session notes in a private configured vault. Public
+template maintenance does not need fake activity logs unless explicitly requested.
 
 ## Runbooks
 
-Named `<verb-noun>.md` (e.g. `process-new-client.md`). Must include: Owner, Last reviewed
-date, Prerequisites, Steps with expected output, Validation, and Rollback. Add a Change
-log at the bottom when updated.
+Runbooks should include owner, last reviewed date, prerequisites, steps, validation, escalation or
+rollback, known issues, and change log.
 
 ## Naming conventions
 
-- Folders: lowercase-with-hyphens
-- Files: inherit their source convention; date stamps use ISO `YYYY-MM-DD`
-- Timestamps in frontmatter: ISO 8601
+- Folders: lowercase-with-hyphens.
+- Date stamps: `YYYY-MM-DD`.
+- Prefer one file per durable item when practical.
+- Keep personal and business material separated unless the user explicitly chooses otherwise.
