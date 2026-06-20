@@ -1,96 +1,58 @@
-# Knowledge Vault Starter
+# [Team Name] Brain
 
-An AI-tool-agnostic starter repository for building a local-first knowledge system in Obsidian.
+Shared knowledge base for the [Team] team. Everything here — active work, procedures,
+daily activity, and accumulated knowledge — lives as plain markdown in git so it's readable
+by both the team and our AI agent.
 
-This repository contains:
-- vault structure
-- an installable vault operating layer under `ops/`
-- note templates
-- example files with fake content
-- optional integration notes
-- bootstrap prompts and helper scripts
+**The folder is the asset. Obsidian is the human editor. Git is the audit trail.**
 
-It does **not** contain any private knowledge, journal history, contacts, or source material from a live vault.
+---
 
-## Design goals
+## What this repository is — and is not
 
-- Keep the vault independent of any single AI vendor or tool
-- Store durable knowledge in plain markdown
-- Let any capable assistant operate the system through small adapter prompts
-- Support manual workflows first, then optional automation
-- Make sharing safe by separating framework from personal content
+This vault is for **[ORGANIZATION] work only**: projects, tasks, procedures, decisions,
+team knowledge, and operational context.
 
-## What this supports
+It is not a personal journal, personal-life organizer, or secrets manager. Each user may
+create a local `_private/` folder for scratch notes and draft thinking — that folder is
+gitignored and never pushed to the shared repository.
 
-- journaling
-- source ingestion and summarization
-- project tracking
-- meeting transcript capture and processing
-- contacts and source pages
-- optional task integration
-- optional automation through cron jobs, local scripts, or external runtimes
+For personal use outside work, use the public personal version of this framework:
+**https://github.com/walterriopedre/brain-vault**
 
-## Optional tools and workflows
+---
 
-This starter can be used with:
-- Obsidian
-- Obsidian CLI, when available
-- Codex
-- Claude Code
-- ChatGPT
-- Cursor
-- Gemini
-- cron jobs
-- local scripts
-- external runtimes such as OpenClaw
+## Quick start
 
-It also supports workflows that can be done manually or automated with external tools, including:
-- journal import from tools like Day One
-- meeting transcript ingestion from tools like Krisp
-- task and project sync with tools like Linear
-- bookmark or web-source ingestion
+See `QUICKSTART.md` for the 5-step version, or `INSTALL.md` for the full setup guide.
 
-## Repo layout
+---
 
-```text
-bootstrap/
-config/
-docs/
-examples/
-integrations/
-optional/
-prompts/
-templates/
-README.md
-START-HERE.md
+## Layout
+
+```
+vault/
+├── docs/            Human-readable guides — how this works, security, onboarding
+├── knowledge/       Team expertise: systems, decisions, solutions, concepts
+├── projects/        One folder per initiative
+├── tasks/           Flat task store: open/ · in-progress/ · done/ · cancelled/
+├── work-logs/       One dated file per day
+├── meetings/        Work-related meeting notes
+├── inbox/           Raw signals awaiting triage
+├── runbooks/        Step-by-step procedures
+├── people/          Internal and external contacts — one note per person
+├── organizations/   Companies and teams relevant to work
+├── _templates/      Starting points — copy, don't edit in place
+├── archive/         Completed and retired material
+├── _private/        Local only — gitignored, created by each user if needed
+└── gotchas.md       Append-only log of failures, surprises, and dead ends
 ```
 
-## Recommended use
+---
 
-1. Clone this repo locally.
-2. Read [START-HERE.md](./START-HERE.md).
-3. Copy or generate the starter structure into a new empty Obsidian vault.
-4. Install the starter into the vault.
-5. Point your AI tool at `CONTEXT.md` and `ops/INDEX.md`.
-6. Give your AI tool the bootstrap prompt in [prompts/new-vault-bootstrap.prompt.md](./prompts/new-vault-bootstrap.prompt.md).
-7. Add optional integrations only after the core vault is working.
+## The one rule
 
-## Non-goals
-
-- exporting someone else's knowledge
-- depending on hidden AI memory
-- forcing one assistant or runtime
-- requiring automation before the vault is useful
-
-## Canonical instructions
-
-The installed vault is the source of truth for operating instructions.
-
-- Vault instructions live in `ops/`
-- Tool config files should remain thin adapters that point to `CONTEXT.md` and `ops/INDEX.md`
-- Repo docs can explain packaging and setup, but they should not become the canonical workflow layer
-
-## Attribution and license
-
-- Attribution and upstream influence notes: [NOTICE.md](./NOTICE.md) and [REFERENCES.md](./REFERENCES.md)
-- License: [LICENSE](./LICENSE)
+**The vault must be self-contained.** Every configuration, every rule, every AI instruction
+lives in this folder — not in the AI app's settings, not in a cloud account, not in someone's
+memory. If you hand this folder to someone new, or switch to a different AI model, the system
+works exactly the same way with no additional setup.
