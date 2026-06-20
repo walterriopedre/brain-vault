@@ -1,0 +1,1202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brain Vault - Personal + Work Knowledge System</title>
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #F4F7F6;
+            --white: #FFFFFF;
+            --panel: #F8FAF9;
+            --border: #DCE7E2;
+            --text: #24302D;
+            --muted: #7A8782;
+            --subtle: #56645F;
+            --accent: #286B5F;
+            --accent-dim: rgba(40, 107, 95, 0.10);
+            --teal: #2F647D;
+            --green: #3F7D52;
+            --green-bg: rgba(63,125,82,0.10);
+            --green-border: rgba(63,125,82,0.28);
+            --red: #B65454;
+            --red-bg: rgba(182,84,84,0.07);
+            --red-border: rgba(182,84,84,0.24);
+            --orange: #A76A32;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Mulish', 'Segoe UI', system-ui, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        /* ── HERO ── */
+        .hero {
+            background: var(--accent);
+            color: #fff;
+            padding: 4rem 2rem 3.5rem;
+            text-align: center;
+        }
+        .hero-eyebrow {
+            font-size: 0.75rem; font-weight: 800; letter-spacing: 4px;
+            text-transform: uppercase; color: rgba(255,255,255,0.6);
+            margin-bottom: 1.25rem;
+        }
+        .hero-title {
+            font-size: 3rem; font-weight: 800; line-height: 1.1;
+            letter-spacing: 0; margin-bottom: 1.25rem;
+        }
+        .hero-title span { color: rgba(255,255,255,0.55); font-weight: 300; }
+        .hero-sub {
+            font-size: 1.15rem; color: rgba(255,255,255,0.75);
+            max-width: 640px; margin: 0 auto 2rem; line-height: 1.65;
+        }
+        .hero-tags { display: flex; justify-content: center; gap: 0.75rem; flex-wrap: wrap; }
+        .hero-tag {
+            background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 20px; padding: 0.3rem 0.9rem;
+            font-size: 0.8rem; font-weight: 700; color: rgba(255,255,255,0.85);
+        }
+
+        /* ── LAYOUT ── */
+        .page { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
+
+        /* ── SECTION ── */
+        .section { padding: 4rem 0 3rem; border-bottom: 1px solid var(--border); }
+        .section:last-of-type { border-bottom: none; }
+        .section-label {
+            font-size: 0.7rem; font-weight: 800; text-transform: uppercase;
+            letter-spacing: 4px; color: var(--accent); margin-bottom: 0.75rem;
+        }
+        .section-title {
+            font-size: 2rem; font-weight: 800; line-height: 1.2;
+            margin-bottom: 1rem; letter-spacing: 0;
+        }
+        .section-intro {
+            font-size: 1.05rem; color: var(--subtle); line-height: 1.75;
+            max-width: 720px; margin-bottom: 2.5rem;
+        }
+
+        /* ── CARDS ── */
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+        .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.25rem; }
+        .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem; }
+
+        .card {
+            background: var(--white); border: 1px solid var(--border);
+            border-radius: 8px; padding: 1.5rem;
+        }
+        .card-accent { border-top: 3px solid var(--accent); }
+        .card-green  { border-top: 3px solid var(--green); }
+        .card-teal   { border-top: 3px solid var(--teal); }
+        .card-orange { border-top: 3px solid var(--orange); }
+        .card-red    { border-top: 3px solid var(--red); }
+
+        .card-icon {
+            font-size: 1.5rem; margin-bottom: 0.75rem;
+        }
+        .card h3 {
+            font-size: 0.85rem; font-weight: 800; text-transform: uppercase;
+            letter-spacing: 1.5px; margin-bottom: 0.6rem;
+        }
+        .card p { font-size: 0.9rem; color: var(--subtle); line-height: 1.65; }
+
+        /* ── BIG STATEMENT ── */
+        .big-statement {
+            background: var(--white); border: 1px solid var(--border);
+            border-left: 5px solid var(--accent); border-radius: 0 8px 8px 0;
+            padding: 1.5rem 2rem; margin-bottom: 2rem;
+        }
+        .big-statement p {
+            font-size: 1.2rem; color: var(--text); line-height: 1.65;
+            font-weight: 300;
+        }
+        .big-statement strong { font-weight: 800; color: var(--accent); }
+
+        /* ── BENEFIT ROW ── */
+        .benefit-row {
+            display: flex; gap: 1rem; align-items: flex-start;
+            padding: 1.1rem 0; border-bottom: 1px solid var(--border);
+        }
+        .benefit-row:last-child { border-bottom: none; }
+        .benefit-icon {
+            width: 36px; height: 36px; border-radius: 8px;
+            background: var(--accent-dim); display: flex;
+            align-items: center; justify-content: center;
+            flex-shrink: 0; font-size: 1rem;
+        }
+        .benefit-body h4 {
+            font-size: 0.92rem; font-weight: 800; margin-bottom: 0.25rem; color: var(--text);
+        }
+        .benefit-body p { font-size: 0.88rem; color: var(--subtle); line-height: 1.55; }
+
+        /* ── BEFORE / AFTER ── */
+        .ba-block {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem;
+            margin-bottom: 2rem;
+        }
+        .ba-side { border-radius: 8px; padding: 1.5rem; }
+        .ba-before { background: var(--red-bg); border: 1px solid var(--red-border); }
+        .ba-after  { background: var(--green-bg); border: 1px solid var(--green-border); }
+        .ba-label {
+            font-size: 0.68rem; font-weight: 800; text-transform: uppercase;
+            letter-spacing: 2px; margin-bottom: 0.75rem;
+        }
+        .ba-before .ba-label { color: var(--red); }
+        .ba-after  .ba-label { color: var(--green); }
+        .ba-side ul { padding-left: 1.1rem; }
+        .ba-side li { font-size: 0.9rem; color: var(--subtle); margin-bottom: 0.4rem; line-height: 1.5; }
+
+        /* ── STEPS ── */
+        .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin: 2rem 0; }
+        .step-box {
+            background: var(--white); border: 1px solid var(--border);
+            border-radius: 8px; padding: 1.5rem 1.25rem; text-align: center;
+        }
+        .step-num {
+            width: 36px; height: 36px; border-radius: 50%;
+            background: var(--accent); color: #fff;
+            font-size: 0.9rem; font-weight: 800;
+            display: flex; align-items: center; justify-content: center;
+            margin: 0 auto 0.9rem;
+        }
+        .step-box h4 { font-size: 0.85rem; font-weight: 800; margin-bottom: 0.4rem; color: var(--text); }
+        .step-box p  { font-size: 0.82rem; color: var(--subtle); line-height: 1.5; }
+
+        /* ── ROLE STANDPOINT ── */
+        .standpoint {
+            background: var(--white); border: 1px solid var(--border);
+            border-radius: 8px; overflow: hidden; margin-bottom: 1.5rem;
+        }
+        .standpoint-header {
+            display: flex; align-items: center; gap: 1rem;
+            padding: 1.25rem 1.75rem; border-bottom: 1px solid var(--border);
+        }
+        .standpoint-dot {
+            width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0;
+        }
+        .standpoint-header h3 {
+            font-size: 0.78rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px;
+        }
+        .standpoint-body {
+            padding: 1.5rem 1.75rem;
+            display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem;
+        }
+        .standpoint-point h4 {
+            font-size: 0.82rem; font-weight: 800; margin-bottom: 0.35rem; color: var(--text);
+        }
+        .standpoint-point p { font-size: 0.88rem; color: var(--subtle); line-height: 1.6; }
+
+        /* ── Q&A ── */
+        .qa-item {
+            background: var(--white); border: 1px solid var(--border);
+            border-radius: 8px; margin-bottom: 1rem; overflow: hidden;
+        }
+        .qa-q {
+            padding: 1rem 1.5rem; font-weight: 700; font-size: 0.95rem;
+            color: var(--text); background: var(--panel);
+            border-bottom: 1px solid var(--border);
+        }
+        .qa-a { padding: 1rem 1.5rem; font-size: 0.9rem; color: var(--subtle); line-height: 1.7; }
+
+        /* ── PRIVATE BOX ── */
+        .private-box {
+            background: var(--panel); border: 1px solid var(--border);
+            border-radius: 8px; padding: 1.5rem; margin-top: 1.5rem;
+        }
+        .private-box h4 {
+            font-size: 0.78rem; font-weight: 800; text-transform: uppercase;
+            letter-spacing: 2px; color: var(--muted); margin-bottom: 0.75rem;
+        }
+        .private-box ul { padding-left: 1.1rem; }
+        .private-box li { font-size: 0.88rem; color: var(--subtle); margin-bottom: 0.3rem; }
+
+        /* ── WHAT IT IS NOT ── */
+        .not-grid {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-top: 1.5rem;
+        }
+        .not-box {
+            border-radius: 8px; padding: 1.25rem;
+        }
+        .not-is-not { background: var(--red-bg); border: 1px solid var(--red-border); }
+        .not-is-not h4 { color: var(--red); }
+        .not-is     { background: var(--green-bg); border: 1px solid var(--green-border); }
+        .not-is h4  { color: var(--green); }
+        .not-box h4 { font-size: 0.72rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 0.6rem; }
+        .not-box ul { padding-left: 1.1rem; }
+        .not-box li { font-size: 0.88rem; color: var(--subtle); margin-bottom: 0.3rem; }
+
+        /* ── FOOTER ── */
+        footer {
+            background: var(--text); color: rgba(255,255,255,0.5);
+            text-align: center; padding: 2.5rem;
+            font-size: 0.82rem; line-height: 1.8;
+        }
+        footer strong { color: rgba(255,255,255,0.9); }
+
+        /* ── STAT ── */
+        .stat-row { display: flex; gap: 1.5rem; margin-bottom: 2rem; flex-wrap: wrap; }
+        .stat-box { flex: 1; min-width: 140px; background: var(--white); border: 1px solid var(--border); border-radius: 8px; padding: 1.25rem; text-align: center; }
+        .stat-num { font-size: 2.8rem; font-weight: 800; color: var(--accent); line-height: 1; }
+        .stat-label { font-size: 0.78rem; color: var(--subtle); margin-top: 0.3rem; line-height: 1.4; }
+
+
+        /* -- LANGUAGE TOGGLE -- */
+        .language-toggle {
+            position: fixed;
+            top: 1rem;
+            right: 1rem;
+            z-index: 100;
+            appearance: none;
+            border: 1px solid rgba(255,255,255,0.36);
+            background: rgba(255,255,255,0.94);
+            color: var(--accent);
+            border-radius: 8px;
+            padding: 0.55rem 0.85rem;
+            box-shadow: 0 12px 28px rgba(36,48,45,0.18);
+            cursor: pointer;
+            font: inherit;
+            text-align: left;
+            min-width: 112px;
+        }
+        .language-toggle:hover { background: #fff; transform: translateY(-1px); }
+        .language-toggle:focus-visible { outline: 3px solid rgba(255,255,255,0.85); outline-offset: 3px; }
+        .language-toggle-kicker {
+            display: block;
+            font-size: 0.62rem;
+            font-weight: 800;
+            letter-spacing: 1.6px;
+            line-height: 1;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-bottom: 0.22rem;
+        }
+        .language-toggle-label {
+            display: block;
+            font-size: 0.92rem;
+            font-weight: 800;
+            line-height: 1.15;
+        }
+        .language-version[hidden] { display: none; }
+
+        @media (max-width: 900px) {
+            .grid-4, .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+            .standpoint-body { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 640px) {
+            .hero { padding: 3rem 1.25rem 2.75rem; }
+            .hero-title { font-size: 2.25rem; }
+            .hero-sub { font-size: 1rem; }
+            .page { padding: 0 1.15rem; }
+            .section { padding: 3rem 0 2.25rem; }
+            .section-title { font-size: 1.55rem; }
+            .section-intro { font-size: 0.98rem; }
+            .grid-2, .grid-3, .grid-4, .ba-block, .steps, .not-grid { grid-template-columns: 1fr; }
+            .standpoint-header, .standpoint-body { padding-left: 1.25rem; padding-right: 1.25rem; }
+            .big-statement { padding: 1.25rem; }
+            .big-statement p { font-size: 1.05rem; }
+            .stat-box { min-width: 100%; }
+            table { display: block; overflow-x: auto; }
+            .language-toggle { top: 0.75rem; right: 0.75rem; min-width: 96px; padding: 0.48rem 0.7rem; }
+            .language-toggle-kicker { font-size: 0.56rem; }
+            .language-toggle-label { font-size: 0.82rem; }
+        }
+    </style>
+</head>
+<body>
+<button class="language-toggle" type="button" data-language-toggle aria-label="Switch to Spanish">
+    <span class="language-toggle-kicker">Language</span>
+    <span class="language-toggle-label">Español</span>
+</button>
+
+<div class="language-version" data-lang="en">
+<!-- === HERO === -->
+<div class="hero">
+    <div class="hero-eyebrow">Personal + Work Knowledge System</div>
+    <h1 class="hero-title">Brain Vault<br><span>One memory, clear boundaries.</span></h1>
+    <p class="hero-sub">A local-first Markdown vault for organizing work, personal projects, reusable knowledge, and AI context without locking the knowledge inside one app or one vendor.</p>
+    <div class="hero-tags">
+        <span class="hero-tag">Work</span>
+        <span class="hero-tag">Personal</span>
+        <span class="hero-tag">Shared knowledge</span>
+        <span class="hero-tag">Local first</span>
+        <span class="hero-tag">Any AI assistant</span>
+    </div>
+</div>
+
+<div class="page">
+
+<!-- === INDIVIDUAL FIRST === -->
+<div class="section">
+    <div class="section-label">Start here</div>
+    <h2 class="section-title">What this means for you</h2>
+    <p class="section-intro">Brain Vault is the evolution of the earlier Team Brain idea. The core problem is still the same: every AI session, project handoff, and troubleshooting effort starts weaker when the context lives only in someone's head. The new version supports work, personal organization, and reusable shared knowledge while keeping those areas deliberately separated.</p>
+
+    <div class="big-statement">
+        <p>Most people do not have one kind of context. You have work projects, personal projects, decisions, routines, lessons learned, notes, draft thinking, and things you want an AI assistant to remember next time. <strong>Brain Vault gives that context a home without pretending all of it belongs in the same audience.</strong></p>
+    </div>
+
+    <div class="ba-block">
+        <div class="ba-side ba-before">
+            <div class="ba-label">Without Brain Vault</div>
+            <ul>
+                <li>You re-explain the same background at the start of every AI session</li>
+                <li>Work notes, personal notes, and reusable lessons scatter across tools</li>
+                <li>AI gives generic answers because it does not know your real operating context</li>
+                <li>Documentation is written later, if it gets written at all</li>
+                <li>Known fixes and decisions become hard to find when they are needed again</li>
+                <li>Personal scratch thinking risks ending up in the wrong shared place</li>
+            </ul>
+        </div>
+        <div class="ba-side ba-after">
+            <div class="ba-label">With Brain Vault</div>
+            <ul>
+                <li>The AI can read stable context before helping</li>
+                <li>Work material lives under <code>business/</code>, personal material under <code>personal/</code></li>
+                <li>Reusable lessons live in <code>shared/knowledge/</code> instead of being trapped in one project</li>
+                <li>Projects, tasks, runbooks, decisions, and gotchas are captured as work happens</li>
+                <li>Git keeps history and makes the vault portable</li>
+                <li>Local-only scratch notes stay in <code>_private/</code> and do not sync by default</li>
+            </ul>
+        </div>
+    </div>
+
+    <div style="background: var(--white); border: 1px solid var(--border); border-radius: 8px; padding: 2rem; margin-bottom: 2rem;">
+        <h3 style="font-size: 0.78rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; color: var(--accent); margin-bottom: 1.5rem;">What changes in practice</h3>
+        <div class="benefit-row">
+            <div class="benefit-icon">&#x1F9E0;</div>
+            <div class="benefit-body">
+                <h4>Context that persists</h4>
+                <p>The vault holds useful context in plain files: projects, tasks, decisions, runbooks, lessons learned, and AI operating instructions. You stop rebuilding the same background every time you ask for help.</p>
+            </div>
+        </div>
+        <div class="benefit-row">
+            <div class="benefit-icon">&#x1F4C1;</div>
+            <div class="benefit-body">
+                <h4>Clear personal and work boundaries</h4>
+                <p>A mixed vault is not a pile of everything. <code>personal/</code>, <code>business/</code>, <code>shared/</code>, and <code>_private/</code> each have a different audience and purpose.</p>
+            </div>
+        </div>
+        <div class="benefit-row">
+            <div class="benefit-icon">&#x1F4DD;</div>
+            <div class="benefit-body">
+                <h4>Documentation as a byproduct</h4>
+                <p>As you work, the assistant can help turn activity into notes, tasks, runbooks, decision records, and gotchas. The goal is less after-the-fact documentation and more captured operating memory.</p>
+            </div>
+        </div>
+        <div class="benefit-row">
+            <div class="benefit-icon">&#x1F517;</div>
+            <div class="benefit-body">
+                <h4>Links to official systems, not copies of everything</h4>
+                <p>Brain Vault is a context layer. Tickets, approvals, HR records, customer records, legal records, financial records, audit logs, and regulated evidence stay in their official systems.</p>
+            </div>
+        </div>
+        <div class="benefit-row">
+            <div class="benefit-icon">&#x1F512;</div>
+            <div class="benefit-body">
+                <h4>Local-first ownership</h4>
+                <p>The core asset is a folder of Markdown files. It can be used with Claude Code, Codex, ChatGPT, Copilot where appropriate, Obsidian, VS Code, or no AI at all.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="stat-row">
+        <div class="stat-box">
+            <div class="stat-num">3</div>
+            <div class="stat-label">Primary areas: personal, business, shared</div>
+        </div>
+        <div class="stat-box">
+            <div class="stat-num">1</div>
+            <div class="stat-label">Portable folder as the source of context</div>
+        </div>
+        <div class="stat-box">
+            <div class="stat-num">0</div>
+            <div class="stat-label">Secrets or credentials stored in the vault</div>
+        </div>
+        <div class="stat-box">
+            <div class="stat-num">Any</div>
+            <div class="stat-label">AI assistant that can read local files</div>
+        </div>
+    </div>
+
+    <h3 style="font-size: 0.78rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; color: var(--accent); margin-bottom: 1rem; margin-top: 2rem;">How to get started</h3>
+    <div class="steps">
+        <div class="step-box">
+            <div class="step-num">1</div>
+            <h4>Choose the mode</h4>
+            <p>Personal, business, or mixed. For Slide work, business material needs the right work-owned location and access controls.</p>
+        </div>
+        <div class="step-box">
+            <div class="step-num">2</div>
+            <h4>Create the vault</h4>
+            <p>Start from the Brain Vault template. Keep the structure boring until real use proves you need more.</p>
+        </div>
+        <div class="step-box">
+            <div class="step-num">3</div>
+            <h4>Add one workflow</h4>
+            <p>Capture one project, one task, one runbook, or one reusable lesson. Value comes from real use, not empty folders.</p>
+        </div>
+        <div class="step-box">
+            <div class="step-num">4</div>
+            <h4>Let AI use it</h4>
+            <p>Ask your assistant to read the vault first, respect boundaries, and turn useful work into durable notes.</p>
+        </div>
+    </div>
+</div>
+
+<!-- === WHAT IT IS === -->
+<div class="section">
+    <div class="section-label">The concept</div>
+    <h2 class="section-title">What it actually is</h2>
+    <p class="section-intro">Brain Vault is a structured folder of Markdown files. It is intentionally plain. The folder is the asset, Markdown is the format, Git is the history, and AI is an optional working partner.</p>
+
+    <div class="big-statement">
+        <p><strong>The point is not to create another place to hoard documents.</strong> The point is to give people and AI assistants stable, inspectable context while preserving clear boundaries around audience, ownership, and sensitivity.</p>
+    </div>
+
+    <div class="not-grid">
+        <div class="not-box not-is-not">
+            <h4>What this is not</h4>
+            <ul>
+                <li>Not a replacement for official systems of record</li>
+                <li>Not a secrets manager or password vault</li>
+                <li>Not a mandate that every personal thought belongs in a work repo</li>
+                <li>Not locked to Claude, OpenAI, Microsoft, or any one AI model</li>
+                <li>Not a dumping ground for customer, HR, legal, medical, or regulated records</li>
+                <li>Not useful unless the owner keeps boundaries clean</li>
+            </ul>
+        </div>
+        <div class="not-box not-is">
+            <h4>What this is</h4>
+            <ul>
+                <li>A durable context layer for people and AI assistants</li>
+                <li>A personal operating memory when used privately</li>
+                <li>A business operating memory when used by a team</li>
+                <li>A place for reusable knowledge, decisions, solutions, and gotchas</li>
+                <li>A portable folder that can move between tools</li>
+                <li>A practical way to reduce repeated explanation and rediscovery</li>
+            </ul>
+        </div>
+    </div>
+
+    <div style="margin-top: 2rem;">
+        <table style="width: 100%; background: var(--white); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; border-collapse: collapse; font-size: 0.9rem;">
+            <thead>
+                <tr style="background: var(--panel);">
+                    <th style="padding: 0.9rem 1.25rem; text-align: left; font-size: 0.7rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1.5px; color: var(--muted); border-bottom: 1px solid var(--border);">Area</th>
+                    <th style="padding: 0.9rem 1.25rem; text-align: left; font-size: 0.7rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1.5px; color: var(--muted); border-bottom: 1px solid var(--border);">Purpose</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr style="border-bottom: 1px solid var(--border);">
+                    <td style="padding: 0.85rem 1.25rem; font-weight: 700;"><code>personal/</code></td>
+                    <td style="padding: 0.85rem 1.25rem; color: var(--subtle);">Private personal projects, learning, routines, creative work, and life admin in a private vault.</td>
+                </tr>
+                <tr style="border-bottom: 1px solid var(--border); background: rgba(244,247,246,0.7);">
+                    <td style="padding: 0.85rem 1.25rem; font-weight: 700;"><code>business/</code></td>
+                    <td style="padding: 0.85rem 1.25rem; color: var(--subtle);">Work projects, tasks, runbooks, meetings, stakeholders, and operating knowledge with the right work controls.</td>
+                </tr>
+                <tr style="border-bottom: 1px solid var(--border);">
+                    <td style="padding: 0.85rem 1.25rem; font-weight: 700;"><code>shared/</code></td>
+                    <td style="padding: 0.85rem 1.25rem; color: var(--subtle);">Reusable knowledge, decisions, concepts, solutions, and gotchas that can serve either mode safely.</td>
+                </tr>
+                <tr style="border-bottom: 1px solid var(--border); background: rgba(244,247,246,0.7);">
+                    <td style="padding: 0.85rem 1.25rem; font-weight: 700;"><code>ai/</code></td>
+                    <td style="padding: 0.85rem 1.25rem; color: var(--subtle);">Assistant-agnostic guidance for how AI tools should behave in the vault.</td>
+                </tr>
+                <tr>
+                    <td style="padding: 0.85rem 1.25rem; font-weight: 700;"><code>_private/</code></td>
+                    <td style="padding: 0.85rem 1.25rem; color: var(--subtle);">Local scratch notes ignored by Git. Useful for drafts, but not secure enough for secrets or regulated data.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- === ROLE STANDPOINTS === -->
+<div class="section">
+    <div class="section-label">Role standpoints</div>
+    <h2 class="section-title">What it means for different users</h2>
+    <p class="section-intro">The same structure creates different value depending on the role. The important shift is that Brain Vault is no longer only a team knowledge repository. It can support individual work, personal organization, shared team memory, and governance-aware AI usage.</p>
+
+    <div class="standpoint" style="border-top: 4px solid var(--accent);">
+        <div class="standpoint-header">
+            <div class="standpoint-dot" style="background: var(--accent);"></div>
+            <h3 style="color: var(--accent);">Individual user standpoint</h3>
+        </div>
+        <div class="standpoint-body">
+            <div class="standpoint-point">
+                <h4>Less repeated setup</h4>
+                <p>Your assistant can read the current projects, tasks, preferences, and prior decisions instead of asking you to restate everything.</p>
+            </div>
+            <div class="standpoint-point">
+                <h4>One structure for work and life</h4>
+                <p>You can use the same mental model for work projects, personal goals, routines, learning, and reusable notes without mixing the files themselves.</p>
+            </div>
+            <div class="standpoint-point">
+                <h4>Better continuity</h4>
+                <p>When you return to something weeks later, the vault gives you a cold-start path: what happened, why it mattered, and what remains open.</p>
+            </div>
+            <div class="standpoint-point">
+                <h4>Portable habits</h4>
+                <p>The structure works with local files, Git, Markdown editors, and multiple AI tools. The habit survives tool changes.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="standpoint" style="border-top: 4px solid var(--teal);">
+        <div class="standpoint-header">
+            <div class="standpoint-dot" style="background: var(--teal);"></div>
+            <h3 style="color: var(--teal);">Team standpoint</h3>
+        </div>
+        <div class="standpoint-body">
+            <div class="standpoint-point">
+                <h4>Shared operating memory</h4>
+                <p>Runbooks, decisions, project context, meeting notes, and lessons learned become easier to find and reuse.</p>
+            </div>
+            <div class="standpoint-point">
+                <h4>Faster onboarding</h4>
+                <p>A new team member can inspect how the team works instead of relying only on meetings, chat history, and tribal knowledge.</p>
+            </div>
+            <div class="standpoint-point">
+                <h4>Reduced dependency on one person</h4>
+                <p>Procedures and explanations that used to live in one person's head can become team-owned knowledge.</p>
+            </div>
+            <div class="standpoint-point">
+                <h4>Better AI output</h4>
+                <p>AI answers become more specific because the assistant can read the team's actual conventions, known constraints, and prior decisions.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="standpoint" style="border-top: 4px solid var(--red);">
+        <div class="standpoint-header">
+            <div class="standpoint-dot" style="background: var(--red);"></div>
+            <h3 style="color: var(--red);">Security and privacy standpoint</h3>
+        </div>
+        <div class="standpoint-body">
+            <div class="standpoint-point">
+                <h4>No secrets in files</h4>
+                <p>The vault should contain references to approved secure systems, not passwords, tokens, keys, certificates, or connection strings.</p>
+            </div>
+            <div class="standpoint-point">
+                <h4>Audience boundaries</h4>
+                <p>Personal-life material does not belong in a team-owned business vault. Company or customer data does not belong in a personal vault unless policy explicitly allows it.</p>
+            </div>
+            <div class="standpoint-point">
+                <h4>Local private is not secure private</h4>
+                <p><code>_private/</code> is ignored by Git, but it is not encrypted or governed. It is for scratch thinking, not secrets or regulated records.</p>
+            </div>
+            <div class="standpoint-point">
+                <h4>Human approval remains required</h4>
+                <p>AI can draft, analyze, and propose. Consequential business actions still require human review and the official approval path.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="standpoint" style="border-top: 4px solid var(--green);">
+        <div class="standpoint-header">
+            <div class="standpoint-dot" style="background: var(--green);"></div>
+            <h3 style="color: var(--green);">Governance standpoint</h3>
+        </div>
+        <div class="standpoint-body">
+            <div class="standpoint-point">
+                <h4>Git-backed history</h4>
+                <p>Changes are inspectable over time. That helps with recovery, review, and understanding how the vault evolved.</p>
+            </div>
+            <div class="standpoint-point">
+                <h4>Not the system of record</h4>
+                <p>Brain Vault complements tools such as ticketing, document management, compliance systems, and production logging. It should link to official records instead of replacing them.</p>
+            </div>
+            <div class="standpoint-point">
+                <h4>Configurable operating contract</h4>
+                <p><code>AGENTS.md</code> tells AI assistants how to behave in that vault: what to scan, what to protect, where content belongs, and when to ask.</p>
+            </div>
+            <div class="standpoint-point">
+                <h4>Policy can be built into the workflow</h4>
+                <p>Team rules, naming conventions, known risks, and review expectations can live beside the work instead of being remembered informally.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- === EXPANSION MODEL === -->
+<div class="section">
+    <div class="section-label">How it grows</div>
+    <h2 class="section-title">From one person to a shared operating layer</h2>
+    <p class="section-intro">Adoption does not need a big-bang rollout. Brain Vault can start with one person and grow only where the value is obvious. The boundary model matters more as adoption expands.</p>
+
+    <div class="grid-4" style="margin-bottom: 2rem;">
+        <div class="card card-accent">
+            <div class="card-icon">&#x1F9D1;</div>
+            <h3 style="color: var(--accent);">Individual</h3>
+            <p>One person uses a private vault for work context, personal projects, learning, tasks, and AI memory.</p>
+        </div>
+        <div class="card card-teal">
+            <div class="card-icon">&#x1F465;</div>
+            <h3 style="color: var(--teal);">Team</h3>
+            <p>A work-owned vault captures runbooks, decisions, project context, and reusable team knowledge.</p>
+        </div>
+        <div class="card card-orange">
+            <div class="card-icon">&#x1F3E2;</div>
+            <h3 style="color: var(--orange);">Department</h3>
+            <p>Multiple team vaults can share templates, standards, metadata, and guidance while keeping permissions separate.</p>
+        </div>
+        <div class="card card-green">
+            <div class="card-icon">&#x1F4CA;</div>
+            <h3 style="color: var(--green);">Leadership</h3>
+            <p>Optional summaries can surface projects, risks, open work, and decisions without exposing every private note.</p>
+        </div>
+    </div>
+
+    <div style="background: var(--white); border: 1px solid var(--border); border-radius: 8px; padding: 1.5rem; margin-top: 1rem;">
+        <h4 style="font-size: 0.78rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; color: var(--muted); margin-bottom: 0.75rem;">Practical first step for Slide</h4>
+        <p style="font-size: 0.9rem; color: var(--subtle); line-height: 1.65;">Start with one low-risk workflow: a personal work vault for an individual, or a team business vault for project notes, runbooks, and decisions. Keep official records where they already belong. Use the vault to make context reusable and AI assistance more grounded.</p>
+    </div>
+</div>
+
+<!-- === Q&A === -->
+<div class="section">
+    <div class="section-label">Common questions</div>
+    <h2 class="section-title">Objections and honest answers</h2>
+    <p class="section-intro">The mixed personal-and-work model is useful only if the boundaries are explicit. These are the questions that should be answered before broader adoption.</p>
+
+    <div class="qa-item">
+        <div class="qa-q">"Does this mean personal content goes into a company repository?"</div>
+        <div class="qa-a">No. A team-owned business vault should not contain personal-life journals, household information, private family notes, health notes, or unrelated personal material. Brain Vault supports personal use and business use, but the intended audience determines where the content belongs.</div>
+    </div>
+
+    <div class="qa-item">
+        <div class="qa-q">"Can I use the same structure for personal and work?"</div>
+        <div class="qa-a">Yes. That is one of the reasons for the new design. You can use the same patterns for projects, tasks, decisions, notes, and reusable knowledge while keeping separate folders or separate vaults for different audiences.</div>
+    </div>
+
+    <div class="qa-item">
+        <div class="qa-q">"Is Brain Vault a system of record?"</div>
+        <div class="qa-a">No. It is a context and working-knowledge layer. Tickets, approvals, HR records, legal records, customer records, finance records, compliance evidence, and production audit logs stay in the approved systems of record. The vault can link to them and summarize safe context around them.</div>
+    </div>
+
+    <div class="qa-item">
+        <div class="qa-q">"What about privacy and management visibility?"</div>
+        <div class="qa-a">Visibility depends on where the vault lives and who has access. A private personal vault is different from a shared business vault. A leadership summary is different from raw note access. The system should be deployed with clear rules about audience, ownership, and what belongs in each location.</div>
+    </div>
+
+    <div class="qa-item">
+        <div class="qa-q">"Does this create dependency on one AI vendor?"</div>
+        <div class="qa-a">The repository is the durable asset. AI tools are interfaces. Because the files are Markdown, the same vault can work with Claude Code, Codex, ChatGPT, Copilot where appropriate, local models, Obsidian, VS Code, or simple file search.</div>
+    </div>
+
+    <div class="qa-item">
+        <div class="qa-q">"Will people stop thinking and blindly follow AI?"</div>
+        <div class="qa-a">That risk is real with any AI-assisted workflow. Brain Vault does not remove human responsibility. The healthier pattern is to use the assistant to explain, draft, compare, document, and propose while humans validate consequential actions and keep official approvals intact.</div>
+    </div>
+
+    <div class="qa-item">
+        <div class="qa-q">"What should never go in the vault?"</div>
+        <div class="qa-a">Secrets, credentials, private keys, tokens, recovery codes, regulated data, raw customer records, HR records, legal records, financial records, medical records, and any material that the intended audience should not be able to read.</div>
+    </div>
+</div>
+
+<!-- === QUESTIONS === -->
+<div class="section">
+    <div class="section-label">Strategic perspective</div>
+    <h2 class="section-title">Questions worth asking</h2>
+    <p class="section-intro">The real value is not the folder structure. The value is what becomes easier when context is durable, portable, and available to both people and AI assistants.</p>
+
+    <div class="grid-2" style="gap: 1rem;">
+        <div style="background: var(--white); border: 1px solid var(--border); border-left: 4px solid var(--accent); border-radius: 0 8px 8px 0; padding: 1.25rem 1.5rem;">
+            <p style="font-size: 0.95rem; color: var(--text); line-height: 1.6;">What would happen if every useful decision and lesson from this year were searchable next year?</p>
+        </div>
+        <div style="background: var(--white); border: 1px solid var(--border); border-left: 4px solid var(--accent); border-radius: 0 8px 8px 0; padding: 1.25rem 1.5rem;">
+            <p style="font-size: 0.95rem; color: var(--text); line-height: 1.6;">How much time do we spend re-explaining context that could be written once and reused safely?</p>
+        </div>
+        <div style="background: var(--white); border: 1px solid var(--border); border-left: 4px solid var(--accent); border-radius: 0 8px 8px 0; padding: 1.25rem 1.5rem;">
+            <p style="font-size: 0.95rem; color: var(--text); line-height: 1.6;">Which work knowledge should be team-owned, and which thinking should remain private to the individual?</p>
+        </div>
+        <div style="background: var(--white); border: 1px solid var(--border); border-left: 4px solid var(--accent); border-radius: 0 8px 8px 0; padding: 1.25rem 1.5rem;">
+            <p style="font-size: 0.95rem; color: var(--text); line-height: 1.6;">What would onboarding look like if a new person could inspect the team's decisions, runbooks, and known gotchas from day one?</p>
+        </div>
+        <div style="background: var(--white); border: 1px solid var(--border); border-left: 4px solid var(--accent); border-radius: 0 8px 8px 0; padding: 1.25rem 1.5rem;">
+            <p style="font-size: 0.95rem; color: var(--text); line-height: 1.6;">What should be linked to official systems instead of copied into a vault?</p>
+        </div>
+        <div style="background: var(--white); border: 1px solid var(--border); border-left: 4px solid var(--accent); border-radius: 0 8px 8px 0; padding: 1.25rem 1.5rem;">
+            <p style="font-size: 0.95rem; color: var(--text); line-height: 1.6;">How do we make AI more useful without making it the authority?</p>
+        </div>
+    </div>
+</div>
+
+</div><!-- /page -->
+
+<footer>
+    <strong>Brain Vault</strong> - Personal + Work Knowledge System<br>
+    Slide Insurance<br>
+    <span style="font-size: 0.78rem; opacity: 0.6;">Plain text. Local first. Clear boundaries. Durable context for people and AI.</span>
+</footer>
+</div>
+
+<div class="language-version" data-lang="es" hidden>
+<!-- === HERO === -->
+<div class="hero">
+    <div class="hero-eyebrow">Sistema de conocimiento personal + laboral</div>
+    <h1 class="hero-title">Brain Vault<br><span>Una memoria, límites claros.</span></h1>
+    <p class="hero-sub">Un vault local-first en Markdown para organizar trabajo, proyectos personales, conocimiento reutilizable y contexto para IA sin encerrar el conocimiento en una sola app o proveedor.</p>
+    <div class="hero-tags">
+        <span class="hero-tag">Trabajo</span>
+        <span class="hero-tag">Personal</span>
+        <span class="hero-tag">Conocimiento compartido</span>
+        <span class="hero-tag">Local first</span>
+        <span class="hero-tag">Cualquier asistente de IA</span>
+    </div>
+</div>
+
+<div class="page">
+
+<!-- === INDIVIDUAL FIRST === -->
+<div class="section">
+    <div class="section-label">Empieza aquí</div>
+    <h2 class="section-title">Qué significa esto para ti</h2>
+    <p class="section-intro">Brain Vault es la evolución de la idea anterior de Team Brain. El problema de fondo sigue siendo el mismo: cada sesión de IA, traspaso de proyecto o investigación técnica empieza más débil cuando el contexto vive solamente en la cabeza de alguien. La nueva versión sirve para trabajo, organización personal y conocimiento compartido reutilizable, manteniendo esas áreas separadas de forma deliberada.</p>
+
+    <div class="big-statement">
+        <p>La mayoría de las personas no tienen un solo tipo de contexto. Tienes proyectos de trabajo, proyectos personales, decisiones, rutinas, lecciones aprendidas, notas, ideas en borrador y cosas que quisieras que un asistente de IA recordara la próxima vez. <strong>Brain Vault le da un hogar a ese contexto sin fingir que todo pertenece al mismo público.</strong></p>
+    </div>
+
+    <div class="ba-block">
+        <div class="ba-side ba-before">
+            <div class="ba-label">Sin Brain Vault</div>
+            <ul>
+                <li>Vuelves a explicar el mismo contexto al inicio de cada sesión de IA</li>
+                <li>Notas de trabajo, notas personales y aprendizajes reutilizables quedan regados en distintas herramientas</li>
+                <li>La IA da respuestas genéricas porque no conoce tu contexto real</li>
+                <li>La documentación se escribe después, si es que se escribe</li>
+                <li>Soluciones y decisiones conocidas se vuelven difíciles de encontrar cuando hacen falta de nuevo</li>
+                <li>El pensamiento personal en borrador puede terminar en el lugar compartido equivocado</li>
+            </ul>
+        </div>
+        <div class="ba-side ba-after">
+            <div class="ba-label">Con Brain Vault</div>
+            <ul>
+                <li>La IA puede leer contexto estable antes de ayudarte</li>
+                <li>El material de trabajo vive en <code>business/</code> y el material personal en <code>personal/</code></li>
+                <li>Las lecciones reutilizables viven en <code>shared/knowledge/</code> en vez de quedar atrapadas en un solo proyecto</li>
+                <li>Proyectos, tareas, runbooks, decisiones y gotchas se capturan mientras ocurre el trabajo</li>
+                <li>Git conserva el historial y hace que el vault sea portátil</li>
+                <li>Las notas locales de borrador permanecen en <code>_private/</code> y no se sincronizan por defecto</li>
+            </ul>
+        </div>
+    </div>
+
+    <div style="background: var(--white); border: 1px solid var(--border); border-radius: 8px; padding: 2rem; margin-bottom: 2rem;">
+        <h3 style="font-size: 0.78rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; color: var(--accent); margin-bottom: 1.5rem;">Qué cambia en la práctica</h3>
+        <div class="benefit-row">
+            <div class="benefit-icon">&#x1F9E0;</div>
+            <div class="benefit-body">
+                <h4>Contexto que persiste</h4>
+                <p>El vault guarda contexto útil en archivos simples: proyectos, tareas, decisiones, runbooks, lecciones aprendidas e instrucciones operativas para IA. Dejas de reconstruir el mismo trasfondo cada vez que pides ayuda.</p>
+            </div>
+        </div>
+        <div class="benefit-row">
+            <div class="benefit-icon">&#x1F4C1;</div>
+            <div class="benefit-body">
+                <h4>Límites claros entre lo personal y lo laboral</h4>
+                <p>Un vault mixto no es una pila de todo. <code>personal/</code>, <code>business/</code>, <code>shared/</code> y <code>_private/</code> tienen públicos y propósitos distintos.</p>
+            </div>
+        </div>
+        <div class="benefit-row">
+            <div class="benefit-icon">&#x1F4DD;</div>
+            <div class="benefit-body">
+                <h4>Documentación como subproducto</h4>
+                <p>Mientras trabajas, el asistente puede convertir la actividad en notas, tareas, runbooks, registros de decisión y gotchas. La meta es menos documentación tardía y más memoria operativa capturada al momento.</p>
+            </div>
+        </div>
+        <div class="benefit-row">
+            <div class="benefit-icon">&#x1F517;</div>
+            <div class="benefit-body">
+                <h4>Enlaces a sistemas oficiales, no copias de todo</h4>
+                <p>Brain Vault es una capa de contexto. Tickets, aprobaciones, expedientes de HR, registros de clientes, documentos legales, financieros, auditorías y evidencia regulada se quedan en sus sistemas oficiales.</p>
+            </div>
+        </div>
+        <div class="benefit-row">
+            <div class="benefit-icon">&#x1F512;</div>
+            <div class="benefit-body">
+                <h4>Propiedad local-first</h4>
+                <p>El activo principal es una carpeta de archivos Markdown. Puede usarse con Claude Code, Codex, ChatGPT, Copilot cuando aplique, Obsidian, VS Code o sin IA.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="stat-row">
+        <div class="stat-box">
+            <div class="stat-num">3</div>
+            <div class="stat-label">Áreas principales: personal, business, shared</div>
+        </div>
+        <div class="stat-box">
+            <div class="stat-num">1</div>
+            <div class="stat-label">Carpeta portátil como fuente de contexto</div>
+        </div>
+        <div class="stat-box">
+            <div class="stat-num">0</div>
+            <div class="stat-label">Secretos o credenciales guardados en el vault</div>
+        </div>
+        <div class="stat-box">
+            <div class="stat-num">IA</div>
+            <div class="stat-label">Cualquier asistente que pueda leer archivos locales</div>
+        </div>
+    </div>
+
+    <h3 style="font-size: 0.78rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; color: var(--accent); margin-bottom: 1rem; margin-top: 2rem;">Cómo empezar</h3>
+    <div class="steps">
+        <div class="step-box">
+            <div class="step-num">1</div>
+            <h4>Escoge el modo</h4>
+            <p>Personal, business o mixto. Para trabajo de Slide, el material laboral necesita una ubicación propiedad del trabajo y controles de acceso adecuados.</p>
+        </div>
+        <div class="step-box">
+            <div class="step-num">2</div>
+            <h4>Crea el vault</h4>
+            <p>Empieza desde el template de Brain Vault. Mantén la estructura simple hasta que el uso real demuestre que necesitas más.</p>
+        </div>
+        <div class="step-box">
+            <div class="step-num">3</div>
+            <h4>Agrega un flujo real</h4>
+            <p>Captura un proyecto, una tarea, un runbook o una lección reutilizable. El valor viene del uso real, no de carpetas vacías.</p>
+        </div>
+        <div class="step-box">
+            <div class="step-num">4</div>
+            <h4>Deja que la IA lo use</h4>
+            <p>Pídele a tu asistente que lea el vault primero, respete los límites y convierta trabajo útil en notas duraderas.</p>
+        </div>
+    </div>
+</div>
+
+<!-- === WHAT IT IS === -->
+<div class="section">
+    <div class="section-label">El concepto</div>
+    <h2 class="section-title">Qué es realmente</h2>
+    <p class="section-intro">Brain Vault es una carpeta estructurada de archivos Markdown. Es intencionalmente simple. La carpeta es el activo, Markdown es el formato, Git es el historial y la IA es un compañero de trabajo opcional.</p>
+
+    <div class="big-statement">
+        <p><strong>La idea no es crear otro lugar para acumular documentos.</strong> La idea es darles a las personas y a los asistentes de IA contexto estable e inspeccionable, conservando límites claros de público, propiedad y sensibilidad.</p>
+    </div>
+
+    <div class="not-grid">
+        <div class="not-box not-is-not">
+            <h4>Qué no es</h4>
+            <ul>
+                <li>No reemplaza los sistemas oficiales de registro</li>
+                <li>No es un gestor de secretos ni un password vault</li>
+                <li>No es una obligación de poner cada pensamiento personal en un repositorio de trabajo</li>
+                <li>No está amarrado a Claude, OpenAI, Microsoft ni a un modelo específico</li>
+                <li>No es un lugar para volcar datos de clientes, HR, legales, médicos o regulados</li>
+                <li>No funciona bien si el dueño no mantiene límites claros</li>
+            </ul>
+        </div>
+        <div class="not-box not-is">
+            <h4>Qué sí es</h4>
+            <ul>
+                <li>Una capa de contexto duradero para personas y asistentes de IA</li>
+                <li>Una memoria operativa personal cuando se usa de forma privada</li>
+                <li>Una memoria operativa de negocio cuando la usa un equipo</li>
+                <li>Un lugar para conocimiento, decisiones, soluciones y gotchas reutilizables</li>
+                <li>Una carpeta portátil que puede moverse entre herramientas</li>
+                <li>Una forma práctica de reducir explicación repetida y redescubrimiento</li>
+            </ul>
+        </div>
+    </div>
+
+    <div style="margin-top: 2rem;">
+        <table style="width: 100%; background: var(--white); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; border-collapse: collapse; font-size: 0.9rem;">
+            <thead>
+                <tr style="background: var(--panel);">
+                    <th style="padding: 0.9rem 1.25rem; text-align: left; font-size: 0.7rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1.5px; color: var(--muted); border-bottom: 1px solid var(--border);">Área</th>
+                    <th style="padding: 0.9rem 1.25rem; text-align: left; font-size: 0.7rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1.5px; color: var(--muted); border-bottom: 1px solid var(--border);">Propósito</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr style="border-bottom: 1px solid var(--border);">
+                    <td style="padding: 0.85rem 1.25rem; font-weight: 700;"><code>personal/</code></td>
+                    <td style="padding: 0.85rem 1.25rem; color: var(--subtle);">Proyectos personales privados, aprendizaje, rutinas, trabajo creativo y administración de vida en un vault privado.</td>
+                </tr>
+                <tr style="border-bottom: 1px solid var(--border); background: rgba(244,247,246,0.7);">
+                    <td style="padding: 0.85rem 1.25rem; font-weight: 700;"><code>business/</code></td>
+                    <td style="padding: 0.85rem 1.25rem; color: var(--subtle);">Proyectos de trabajo, tareas, runbooks, reuniones, stakeholders y conocimiento operativo con los controles laborales correctos.</td>
+                </tr>
+                <tr style="border-bottom: 1px solid var(--border);">
+                    <td style="padding: 0.85rem 1.25rem; font-weight: 700;"><code>shared/</code></td>
+                    <td style="padding: 0.85rem 1.25rem; color: var(--subtle);">Conocimiento, decisiones, conceptos, soluciones y gotchas reutilizables que pueden servir de forma segura en ambos modos.</td>
+                </tr>
+                <tr style="border-bottom: 1px solid var(--border); background: rgba(244,247,246,0.7);">
+                    <td style="padding: 0.85rem 1.25rem; font-weight: 700;"><code>ai/</code></td>
+                    <td style="padding: 0.85rem 1.25rem; color: var(--subtle);">Guía independiente del proveedor para definir cómo deben comportarse las herramientas de IA dentro del vault.</td>
+                </tr>
+                <tr>
+                    <td style="padding: 0.85rem 1.25rem; font-weight: 700;"><code>_private/</code></td>
+                    <td style="padding: 0.85rem 1.25rem; color: var(--subtle);">Notas locales ignoradas por Git. Útiles para borradores, pero no suficientemente seguras para secretos o datos regulados.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- === ROLE STANDPOINTS === -->
+<div class="section">
+    <div class="section-label">Perspectivas por rol</div>
+    <h2 class="section-title">Qué significa para distintos usuarios</h2>
+    <p class="section-intro">La misma estructura crea valor distinto según el rol. El cambio importante es que Brain Vault ya no es solamente un repositorio de conocimiento de equipo. Puede apoyar trabajo individual, organización personal, memoria compartida de equipo y uso de IA con gobierno.</p>
+
+    <div class="standpoint" style="border-top: 4px solid var(--accent);">
+        <div class="standpoint-header">
+            <div class="standpoint-dot" style="background: var(--accent);"></div>
+            <h3 style="color: var(--accent);">Perspectiva del usuario individual</h3>
+        </div>
+        <div class="standpoint-body">
+            <div class="standpoint-point">
+                <h4>Menos preparación repetida</h4>
+                <p>Tu asistente puede leer proyectos actuales, tareas, preferencias y decisiones previas en vez de pedirte que lo expliques todo otra vez.</p>
+            </div>
+            <div class="standpoint-point">
+                <h4>Una estructura para trabajo y vida</h4>
+                <p>Puedes usar el mismo modelo mental para proyectos laborales, metas personales, rutinas, aprendizaje y notas reutilizables sin mezclar los archivos.</p>
+            </div>
+            <div class="standpoint-point">
+                <h4>Mejor continuidad</h4>
+                <p>Cuando vuelves a algo semanas después, el vault te da una forma de retomar: qué pasó, por qué importaba y qué sigue abierto.</p>
+            </div>
+            <div class="standpoint-point">
+                <h4>Hábitos portátiles</h4>
+                <p>La estructura funciona con archivos locales, Git, editores Markdown y múltiples herramientas de IA. El hábito sobrevive cambios de herramienta.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="standpoint" style="border-top: 4px solid var(--teal);">
+        <div class="standpoint-header">
+            <div class="standpoint-dot" style="background: var(--teal);"></div>
+            <h3 style="color: var(--teal);">Perspectiva del equipo</h3>
+        </div>
+        <div class="standpoint-body">
+            <div class="standpoint-point">
+                <h4>Memoria operativa compartida</h4>
+                <p>Runbooks, decisiones, contexto de proyectos, notas de reuniones y lecciones aprendidas se vuelven más fáciles de encontrar y reutilizar.</p>
+            </div>
+            <div class="standpoint-point">
+                <h4>Onboarding más rápido</h4>
+                <p>Una persona nueva puede inspeccionar cómo trabaja el equipo en vez de depender solo de reuniones, historial de chat y conocimiento informal.</p>
+            </div>
+            <div class="standpoint-point">
+                <h4>Menos dependencia de una sola persona</h4>
+                <p>Procedimientos y explicaciones que antes vivían en la cabeza de una persona pueden convertirse en conocimiento del equipo.</p>
+            </div>
+            <div class="standpoint-point">
+                <h4>Mejor salida de IA</h4>
+                <p>Las respuestas de IA se vuelven más específicas porque el asistente puede leer las convenciones reales del equipo, restricciones conocidas y decisiones previas.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="standpoint" style="border-top: 4px solid var(--red);">
+        <div class="standpoint-header">
+            <div class="standpoint-dot" style="background: var(--red);"></div>
+            <h3 style="color: var(--red);">Perspectiva de seguridad y privacidad</h3>
+        </div>
+        <div class="standpoint-body">
+            <div class="standpoint-point">
+                <h4>No se guardan secretos en archivos</h4>
+                <p>El vault debe contener referencias a sistemas seguros aprobados, no contraseñas, tokens, llaves, certificados ni connection strings.</p>
+            </div>
+            <div class="standpoint-point">
+                <h4>Límites de audiencia</h4>
+                <p>El material de vida personal no pertenece en un vault de negocio propiedad del equipo. Datos de la compañía o clientes no pertenecen en un vault personal salvo que la política lo permita explícitamente.</p>
+            </div>
+            <div class="standpoint-point">
+                <h4>Local privado no significa seguro</h4>
+                <p><code>_private/</code> es ignorado por Git, pero no está cifrado ni gobernado. Es para ideas y borradores, no para secretos o registros regulados.</p>
+            </div>
+            <div class="standpoint-point">
+                <h4>La aprobación humana sigue siendo necesaria</h4>
+                <p>La IA puede redactar, analizar y proponer. Las acciones de negocio importantes siguen requiriendo revisión humana y el flujo oficial de aprobación.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="standpoint" style="border-top: 4px solid var(--green);">
+        <div class="standpoint-header">
+            <div class="standpoint-dot" style="background: var(--green);"></div>
+            <h3 style="color: var(--green);">Perspectiva de gobierno</h3>
+        </div>
+        <div class="standpoint-body">
+            <div class="standpoint-point">
+                <h4>Historial respaldado por Git</h4>
+                <p>Los cambios son inspeccionables a través del tiempo. Eso ayuda con recuperación, revisión y entendimiento de cómo evolucionó el vault.</p>
+            </div>
+            <div class="standpoint-point">
+                <h4>No es el sistema oficial de registro</h4>
+                <p>Brain Vault complementa herramientas como ticketing, gestión documental, sistemas de cumplimiento y logging de producción. Debe enlazar a registros oficiales en vez de reemplazarlos.</p>
+            </div>
+            <div class="standpoint-point">
+                <h4>Contrato operativo configurable</h4>
+                <p><code>AGENTS.md</code> le dice a los asistentes de IA cómo comportarse en ese vault: qué revisar, qué proteger, dónde pertenece el contenido y cuándo preguntar.</p>
+            </div>
+            <div class="standpoint-point">
+                <h4>La política puede integrarse al flujo de trabajo</h4>
+                <p>Reglas de equipo, convenciones de nombres, riesgos conocidos y expectativas de revisión pueden vivir junto al trabajo en vez de recordarse informalmente.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- === EXPANSION MODEL === -->
+<div class="section">
+    <div class="section-label">Cómo crece</div>
+    <h2 class="section-title">De una persona a una capa operativa compartida</h2>
+    <p class="section-intro">La adopción no necesita un rollout masivo. Brain Vault puede empezar con una persona y crecer solo donde el valor sea evidente. El modelo de límites se vuelve más importante a medida que crece la adopción.</p>
+
+    <div class="grid-4" style="margin-bottom: 2rem;">
+        <div class="card card-accent">
+            <div class="card-icon">&#x1F9D1;</div>
+            <h3 style="color: var(--accent);">Individual</h3>
+            <p>Una persona usa un vault privado para contexto de trabajo, proyectos personales, aprendizaje, tareas y memoria para IA.</p>
+        </div>
+        <div class="card card-teal">
+            <div class="card-icon">&#x1F465;</div>
+            <h3 style="color: var(--teal);">Equipo</h3>
+            <p>Un vault propiedad del trabajo captura runbooks, decisiones, contexto de proyectos y conocimiento reutilizable del equipo.</p>
+        </div>
+        <div class="card card-orange">
+            <div class="card-icon">&#x1F3E2;</div>
+            <h3 style="color: var(--orange);">Departamento</h3>
+            <p>Múltiples vaults de equipo pueden compartir templates, estándares, metadata y guías manteniendo permisos separados.</p>
+        </div>
+        <div class="card card-green">
+            <div class="card-icon">&#x1F4CA;</div>
+            <h3 style="color: var(--green);">Liderazgo</h3>
+            <p>Resúmenes opcionales pueden mostrar proyectos, riesgos, trabajo abierto y decisiones sin exponer cada nota privada.</p>
+        </div>
+    </div>
+
+    <div style="background: var(--white); border: 1px solid var(--border); border-radius: 8px; padding: 1.5rem; margin-top: 1rem;">
+        <h4 style="font-size: 0.78rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; color: var(--muted); margin-bottom: 0.75rem;">Primer paso práctico para Slide</h4>
+        <p style="font-size: 0.9rem; color: var(--subtle); line-height: 1.65;">Empieza con un flujo de bajo riesgo: un vault personal de trabajo para una persona, o un vault business de equipo para notas de proyectos, runbooks y decisiones. Mantén los registros oficiales donde ya pertenecen. Usa el vault para hacer el contexto reutilizable y la ayuda de IA más aterrizada.</p>
+    </div>
+</div>
+
+<!-- === Q&A === -->
+<div class="section">
+    <div class="section-label">Preguntas comunes</div>
+    <h2 class="section-title">Objeciones y respuestas honestas</h2>
+    <p class="section-intro">El modelo mixto de personal y trabajo solo es útil si los límites son explícitos. Estas son las preguntas que conviene responder antes de una adopción más amplia.</p>
+
+    <div class="qa-item">
+        <div class="qa-q">"¿Esto significa que el contenido personal va en un repositorio de la compañía?"</div>
+        <div class="qa-a">No. Un vault business propiedad del equipo no debe contener diarios personales, información del hogar, notas privadas de familia, notas de salud ni material personal no relacionado. Brain Vault soporta uso personal y uso laboral, pero el público previsto determina dónde pertenece el contenido.</div>
+    </div>
+
+    <div class="qa-item">
+        <div class="qa-q">"¿Puedo usar la misma estructura para lo personal y lo laboral?"</div>
+        <div class="qa-a">Sí. Esa es una de las razones del nuevo diseño. Puedes usar los mismos patrones para proyectos, tareas, decisiones, notas y conocimiento reutilizable mientras mantienes carpetas o vaults separados para distintos públicos.</div>
+    </div>
+
+    <div class="qa-item">
+        <div class="qa-q">"¿Brain Vault es un sistema oficial de registro?"</div>
+        <div class="qa-a">No. Es una capa de contexto y conocimiento de trabajo. Tickets, aprobaciones, registros de HR, documentos legales, registros de clientes, finanzas, evidencia de cumplimiento y logs de producción se quedan en los sistemas aprobados. El vault puede enlazarlos y resumir contexto seguro alrededor de ellos.</div>
+    </div>
+
+    <div class="qa-item">
+        <div class="qa-q">"¿Qué pasa con la privacidad y la visibilidad de management?"</div>
+        <div class="qa-a">La visibilidad depende de dónde vive el vault y quién tiene acceso. Un vault personal privado es distinto a un vault business compartido. Un resumen para liderazgo es distinto al acceso a notas crudas. El sistema debe desplegarse con reglas claras sobre audiencia, propiedad y qué pertenece en cada lugar.</div>
+    </div>
+
+    <div class="qa-item">
+        <div class="qa-q">"¿Esto crea dependencia de un solo proveedor de IA?"</div>
+        <div class="qa-a">El repositorio es el activo duradero. Las herramientas de IA son interfaces. Como los archivos son Markdown, el mismo vault puede funcionar con Claude Code, Codex, ChatGPT, Copilot cuando aplique, modelos locales, Obsidian, VS Code o búsqueda simple de archivos.</div>
+    </div>
+
+    <div class="qa-item">
+        <div class="qa-q">"¿La gente dejará de pensar y seguirá a la IA ciegamente?"</div>
+        <div class="qa-a">Ese riesgo es real en cualquier flujo asistido por IA. Brain Vault no elimina la responsabilidad humana. El patrón sano es usar el asistente para explicar, redactar, comparar, documentar y proponer, mientras las personas validan las acciones importantes y mantienen las aprobaciones oficiales.</div>
+    </div>
+
+    <div class="qa-item">
+        <div class="qa-q">"¿Qué nunca debe ir en el vault?"</div>
+        <div class="qa-a">Secretos, credenciales, llaves privadas, tokens, códigos de recuperación, datos regulados, registros crudos de clientes, registros de HR, documentos legales, registros financieros, registros médicos y cualquier material que el público previsto no deba poder leer.</div>
+    </div>
+</div>
+
+<!-- === QUESTIONS === -->
+<div class="section">
+    <div class="section-label">Perspectiva estratégica</div>
+    <h2 class="section-title">Preguntas que vale la pena hacer</h2>
+    <p class="section-intro">El valor real no está en la estructura de carpetas. El valor está en lo que se vuelve más fácil cuando el contexto es duradero, portátil y disponible para personas y asistentes de IA.</p>
+
+    <div class="grid-2" style="gap: 1rem;">
+        <div style="background: var(--white); border: 1px solid var(--border); border-left: 4px solid var(--accent); border-radius: 0 8px 8px 0; padding: 1.25rem 1.5rem;">
+            <p style="font-size: 0.95rem; color: var(--text); line-height: 1.6;">¿Qué pasaría si cada decisión y lección útil de este año fuera encontrable el año que viene?</p>
+        </div>
+        <div style="background: var(--white); border: 1px solid var(--border); border-left: 4px solid var(--accent); border-radius: 0 8px 8px 0; padding: 1.25rem 1.5rem;">
+            <p style="font-size: 0.95rem; color: var(--text); line-height: 1.6;">¿Cuánto tiempo gastamos reexplicando contexto que podría escribirse una vez y reutilizarse de forma segura?</p>
+        </div>
+        <div style="background: var(--white); border: 1px solid var(--border); border-left: 4px solid var(--accent); border-radius: 0 8px 8px 0; padding: 1.25rem 1.5rem;">
+            <p style="font-size: 0.95rem; color: var(--text); line-height: 1.6;">¿Qué conocimiento laboral debe ser propiedad del equipo y qué pensamiento debe permanecer privado para la persona?</p>
+        </div>
+        <div style="background: var(--white); border: 1px solid var(--border); border-left: 4px solid var(--accent); border-radius: 0 8px 8px 0; padding: 1.25rem 1.5rem;">
+            <p style="font-size: 0.95rem; color: var(--text); line-height: 1.6;">¿Cómo se vería el onboarding si una persona nueva pudiera revisar decisiones, runbooks y gotchas del equipo desde el primer día?</p>
+        </div>
+        <div style="background: var(--white); border: 1px solid var(--border); border-left: 4px solid var(--accent); border-radius: 0 8px 8px 0; padding: 1.25rem 1.5rem;">
+            <p style="font-size: 0.95rem; color: var(--text); line-height: 1.6;">¿Qué debería enlazarse a sistemas oficiales en vez de copiarse dentro de un vault?</p>
+        </div>
+        <div style="background: var(--white); border: 1px solid var(--border); border-left: 4px solid var(--accent); border-radius: 0 8px 8px 0; padding: 1.25rem 1.5rem;">
+            <p style="font-size: 0.95rem; color: var(--text); line-height: 1.6;">¿Cómo hacemos que la IA sea más útil sin convertirla en la autoridad?</p>
+        </div>
+    </div>
+</div>
+
+</div><!-- /page -->
+
+<footer>
+    <strong>Brain Vault</strong> - Sistema de conocimiento personal + laboral<br>
+    Slide Insurance<br>
+    <span style="font-size: 0.78rem; opacity: 0.6;">Texto plano. Local first. Límites claros. Contexto duradero para personas e IA.</span>
+</footer>
+</div>
+
+<script>
+    (function () {
+        const button = document.querySelector('[data-language-toggle]');
+        const kicker = button.querySelector('.language-toggle-kicker');
+        const label = button.querySelector('.language-toggle-label');
+        const versions = document.querySelectorAll('.language-version');
+        const titles = {
+            en: 'Brain Vault - Personal + Work Knowledge System',
+            es: 'Brain Vault - Sistema de conocimiento personal + laboral'
+        };
+
+        function setLanguage(lang) {
+            const active = lang === 'es' ? 'es' : 'en';
+            versions.forEach((version) => {
+                version.hidden = version.dataset.lang !== active;
+            });
+            document.documentElement.lang = active;
+            document.title = titles[active];
+            kicker.textContent = active === 'en' ? 'Language' : 'Idioma';
+            label.textContent = active === 'en' ? 'Español' : 'English';
+            button.setAttribute('aria-label', active === 'en' ? 'Switch to Spanish' : 'Cambiar a inglés');
+            try { localStorage.setItem('brainVaultLanguage', active); } catch (error) {}
+        }
+
+        button.addEventListener('click', () => {
+            const current = document.documentElement.lang === 'es' ? 'es' : 'en';
+            setLanguage(current === 'en' ? 'es' : 'en');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        let saved = 'en';
+        try { saved = localStorage.getItem('brainVaultLanguage') || 'en'; } catch (error) {}
+        setLanguage(saved);
+    })();
+</script>
+</body>
+</html>

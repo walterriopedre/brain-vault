@@ -1,14 +1,30 @@
 # Brain Vault
 
-Brain Vault is a public-safe starter repository for building a local-first Markdown knowledge
-system that humans and AI assistants can both use.
+**Start here:** [Open the Brain Vault Overview](https://walterriopedre.github.io/brain-vault/)
 
-Use it for personal life, business work, or a clearly separated mix of both. The vault keeps
-projects, tasks, notes, runbooks, decisions, lessons learned, and AI operating instructions in
-plain files you own.
+Brain Vault is a local-first Markdown knowledge system for personal work, business work, shared
+knowledge, and AI-assisted context.
 
-**The folder is the asset. Markdown is the format. Git is the history. AI is an optional
-working partner.**
+The overview above is the human introduction. It explains what Brain Vault is, why it exists, how
+personal and business boundaries work, and what kinds of users it is meant to help.
+
+**The folder is the asset. Markdown is the format. Git is the history. AI is an optional working
+partner.**
+
+---
+
+## Who Should Read What
+
+| Audience | Start here | Purpose |
+|----------|------------|---------|
+| New users | [Brain Vault Overview](https://walterriopedre.github.io/brain-vault/) | Understand the idea before reading technical docs |
+| People setting up a vault | [QUICKSTART.md](QUICKSTART.md) | Create a first working vault quickly |
+| People doing a full setup | [INSTALL.md](INSTALL.md) | Configure a private personal, business, or mixed vault |
+| AI assistants | [AGENTS.md](AGENTS.md) and [CLAUDE.md](CLAUDE.md) | Follow the vault operating contract |
+| Existing Team Brain users | [docs/migration-from-team-brain.md](docs/migration-from-team-brain.md) | Understand what changed |
+
+If you are reading this on GitHub before the website is enabled, the same overview lives at
+[docs/index.html](docs/index.html).
 
 ---
 
@@ -17,9 +33,9 @@ working partner.**
 Brain Vault is:
 
 - A practical folder structure for organizing durable knowledge.
-- A public template with fake examples only.
-- A local-first workspace that works with Obsidian, VS Code, Claude Code, Codex, ChatGPT, or
-  any tool that can read files.
+- A public-safe template with fake examples only.
+- A local-first workspace that works with Obsidian, VS Code, Claude Code, Codex, ChatGPT, or any
+  tool that can read files.
 - A way to make AI assistance less repetitive by giving it stable context.
 - A system you can adapt for an individual, household, founder, team, department, or small
   business.
@@ -28,8 +44,8 @@ Brain Vault is not:
 
 - A secrets manager.
 - A replacement for official systems of record.
-- A place to publish private personal, customer, employee, legal, medical, financial, or regulated
-  data.
+- A place to publish private personal, customer, employee, legal, medical, financial, regulated,
+  or confidential data.
 - Locked to one AI vendor or one note-taking app.
 
 ---
@@ -38,65 +54,59 @@ Brain Vault is not:
 
 Most users should start with one of these modes:
 
-| Mode | Best for | Start here |
-|------|----------|------------|
-| Personal | Projects, learning, routines, household admin, creative work | `docs/personal-vault-guide.md` |
-| Business | Team context, runbooks, decisions, project notes, operating knowledge | `docs/business-vault-guide.md` |
-| Shared | Reusable knowledge that belongs in both modes | `shared/README.md` |
+| Mode | Best for | Guide |
+|------|----------|-------|
+| Personal | Projects, learning, routines, household admin, creative work | [docs/personal-vault-guide.md](docs/personal-vault-guide.md) |
+| Business | Team context, runbooks, decisions, project notes, operating knowledge | [docs/business-vault-guide.md](docs/business-vault-guide.md) |
+| Shared | Reusable knowledge that belongs in both modes | [shared/README.md](shared/README.md) |
 
-You can use one mode only, or keep personal and business material separated inside the same
-private clone. If this repository is public, keep only templates, documentation, and fake examples
-here.
+You can use one mode only, or keep personal and business material separated inside the same private
+clone. If this repository is public, keep only templates, documentation, and fake examples here.
 
 ---
 
-## Layout
+## Repository Layout
 
 ```text
 brain-vault/
+├── docs/            Human overview, guides, FAQ, security, customization notes
 ├── personal/        Personal projects, tasks, routines, notes
-├── business/        Optional business-mode notes and guides
-├── shared/          Reusable patterns that can serve either mode
+├── business/        Business-mode notes, projects, runbooks, meetings, tasks
+├── shared/          Reusable patterns and durable shared knowledge
 ├── ai/              AI usage notes that are not tied to one vendor
 ├── examples/        Fake examples only
 ├── templates/       Public-facing templates for new notes
-├── docs/            Guides, FAQ, security, customization, migration notes
-├── shared/knowledge/    Durable knowledge: systems, decisions, solutions, concepts
-├── business/projects/   One folder per initiative
-├── business/tasks/      Flat task store: open, in-progress, done, cancelled
-├── business/work-logs/  Daily or session-based activity logs
-├── business/meetings/   Meeting notes and decision records
-├── business/inbox/      Raw notes waiting to be sorted
-├── business/runbooks/   Step-by-step procedures
-├── business/people/     Contact and stakeholder notes
-├── business/organizations/ Organization notes
 ├── _claude/         Claude Code-compatible config and skills
 ├── _templates/      Legacy Claude-compatible templates
 ├── archive/         Completed or retired material
 └── _private/        Local-only notes, ignored by Git
 ```
 
-The legacy business-oriented root work folders now live under `business/`, while durable reusable
-knowledge lives under `shared/knowledge/`.
+Durable reusable knowledge lives under `shared/knowledge/`. Business-oriented work folders live
+under `business/`.
 
 ---
 
-## Quick Start
+## GitHub Pages
 
-Read `QUICKSTART.md` for the short setup path.
+This repository publishes the human overview from `docs/index.html`.
 
-For the full walkthrough, read `INSTALL.md`, then choose:
+Expected public URL:
 
-- `docs/personal-vault-guide.md` for an individual vault.
-- `docs/business-vault-guide.md` for a work or team vault.
-- `docs/ai-usage-guide.md` for using the vault with AI assistants.
+```text
+https://walterriopedre.github.io/brain-vault/
+```
+
+The included GitHub Actions workflow deploys the `docs/` folder to GitHub Pages on pushes to
+`main`. In GitHub repository settings, set **Pages -> Source** to **GitHub Actions** if it is not
+already enabled.
 
 ---
 
 ## Public-Safe Rule
 
 This repository should stay safe to publish. Use fake examples in the public template. Put real
-personal, business, customer, employee, financial, medical, legal, or regulated information only
-in a private clone with the right access controls.
+personal, business, customer, employee, financial, medical, legal, regulated, or confidential
+information only in a private clone with the right access controls.
 
 Never commit secrets. Store references to approved secure systems, not secret values.
