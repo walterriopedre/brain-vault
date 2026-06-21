@@ -18,7 +18,8 @@ Folders give information a predictable home:
 - `business/work-logs/` for daily or session history.
 - `business/runbooks/` for repeatable procedures.
 - `shared/knowledge/` for durable understanding.
-- `business/inbox/` for unsorted material.
+- `RAW/` for source captures from Obsidian Web Clipper and similar tools.
+- `business/inbox/` for unsorted operational material.
 - `business/people/` and `business/organizations/` for relationship context.
 
 ### 2. Operating Rules
@@ -52,6 +53,10 @@ Brain Vault supports multiple modes:
 
 Business-oriented work folders now live under `business/`. Durable reusable knowledge lives under
 `shared/knowledge/`.
+
+Source captures should land in `RAW/` first. When a captured article, YouTube transcript, PDF,
+audio message, or external note contains durable understanding, process it into
+`shared/knowledge/` and preserve the original capture as provenance.
 
 ---
 

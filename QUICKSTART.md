@@ -41,6 +41,9 @@ Recommended human editors:
 
 Open the repository folder itself as the vault. The folder is the source of truth.
 
+If you use Obsidian Web Clipper or another capture tool, configure it to save external source
+captures into `RAW/`.
+
 ---
 
 ## 4. Set Up AI Assistance
@@ -78,6 +81,7 @@ Start small:
 2. Create one personal project in `personal/projects/` or one business project in `business/projects/`.
 3. Add one personal task in `personal/tasks/` or one business task in `business/tasks/open/`.
 4. Capture one reusable lesson in `shared/knowledge/`.
-5. For business sessions, write one short log in `business/work-logs/`.
+5. Drop one safe source capture in `RAW/` and process it with `business/runbooks/process-raw-captures.md`.
+6. For business sessions, write one short log in `business/work-logs/`.
 
 Fake examples live in `examples/`. They are safe to copy, adapt, or delete.

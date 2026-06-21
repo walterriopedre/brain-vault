@@ -26,6 +26,8 @@ private documents in a public or poorly protected vault.
 ### Learning Notebook
 
 Capture concepts, summaries, practice notes, and links to source material.
+Use `RAW/` for clipped articles, YouTube notes, PDFs, transcripts, and audio messages before
+promoting durable ideas into `shared/knowledge/`.
 
 Good prompt:
 
@@ -82,6 +84,8 @@ Document how to get oriented: glossary, systems, runbooks, common questions, and
 
 Use `shared/knowledge/` for durable concepts, systems, decisions, and solutions that should survive
 individual projects.
+Use `RAW/` as the source-capture inbox that feeds this library when a captured article, video,
+audio message, or document contains reusable knowledge.
 
 ### Gotchas Log
 

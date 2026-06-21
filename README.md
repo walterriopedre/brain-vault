@@ -36,6 +36,8 @@ Brain Vault is:
 - A public-safe template with fake examples only.
 - A local-first workspace that works with Obsidian, VS Code, Claude Code, Codex, ChatGPT, or any
   tool that can read files.
+- A capture workflow where source material lands in `RAW/` and durable ideas are promoted into
+  `shared/knowledge/`.
 - A way to make AI assistance less repetitive by giving it stable context.
 - A system you can adapt for an individual, household, founder, team, department, or small
   business.
@@ -76,6 +78,7 @@ brain-vault/
 ├── ai/              AI usage notes that are not tied to one vendor
 ├── examples/        Fake examples only
 ├── templates/       Public-facing templates for new notes
+├── RAW/             Source captures before processing
 ├── _claude/         Claude Code-compatible config and skills
 ├── _templates/      Legacy Claude-compatible templates
 ├── archive/         Completed or retired material
@@ -84,6 +87,10 @@ brain-vault/
 
 Durable reusable knowledge lives under `shared/knowledge/`. Business-oriented work folders live
 under `business/`.
+
+Use `RAW/` as the landing folder for Obsidian Web Clipper and other source-capture tools. Process
+captured articles, YouTube notes, PDFs, transcripts, and audio messages with
+`business/runbooks/process-raw-captures.md`.
 
 ---
 

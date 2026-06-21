@@ -14,6 +14,7 @@ Start with:
 - `personal/tasks/` for personal next actions.
 - `personal/routines/` for recurring routines.
 - `personal/notes/` for general notes.
+- `RAW/` for captured articles, YouTube notes, PDFs, transcripts, and audio messages before processing.
 - `shared/knowledge/` for reusable understanding.
 - `_private/` for local scratch notes.
 

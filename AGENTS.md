@@ -42,11 +42,12 @@ In priority order:
 Before doing work in a normal vault session, perform a short scan:
 
 1. **Inbox:** count `business/inbox/`; flag real untriaged items older than 7 days.
-2. **Tasks:** list `business/tasks/in-progress/` and `business/tasks/open/`; flag anything past its `due:` date.
-3. **Projects:** list active project folders; flag any project with stale or missing status.
-4. **Work-log carry-over:** read the last two `business/work-logs/` files if they exist; surface open
+2. **RAW captures:** count `RAW/`; flag real unprocessed source captures older than 7 days.
+3. **Tasks:** list `business/tasks/in-progress/` and `business/tasks/open/`; flag anything past its `due:` date.
+4. **Projects:** list active project folders; flag any project with stale or missing status.
+5. **Work-log carry-over:** read the last two `business/work-logs/` files if they exist; surface open
    `## Follow-ups` items.
-5. **Gotchas:** before any non-trivial operation, read `shared/gotchas.md` for relevant prior warnings.
+6. **Gotchas:** before any non-trivial operation, read `shared/gotchas.md` for relevant prior warnings.
 
 Keep scan output brief. If this is a public template with only placeholder files, say so in one
 sentence and continue.
@@ -74,11 +75,12 @@ For public-template maintenance, do not add fake activity logs unless the user e
 - `ai/` - AI usage guidance independent of one vendor.
 - `examples/` - fake examples only.
 - `templates/` - public-facing templates to copy.
+- `RAW/` - external source captures from Obsidian Web Clipper or similar tools before processing.
 - `business/projects/` - initiatives and project context.
 - `business/tasks/` - task files organized by status.
 - `business/work-logs/` - daily or session logs.
 - `business/meetings/` - meeting notes and decisions.
-- `business/inbox/` - unsorted inputs waiting for triage.
+- `business/inbox/` - operational inputs waiting for triage.
 - `business/runbooks/` - repeatable procedures.
 - `shared/knowledge/` - durable knowledge: systems, decisions, solutions, concepts.
 - `business/people/` - contact and stakeholder notes.
@@ -101,6 +103,7 @@ For public-template maintenance, do not add fake activity logs unless the user e
 - AI output is assistance, not authority. Humans approve consequential actions.
 - Before web searches or external tools, check `shared/knowledge/index.md`, `business/runbooks/`, and `shared/gotchas.md`
   when relevant.
+- Before processing files in `RAW/`, follow `business/runbooks/process-raw-captures.md`.
 - Before non-trivial operations with a blast radius, do a targeted gotchas check.
 - Preserve Claude Code compatibility where reasonable.
 - Do not rewrite unrelated files during focused changes.

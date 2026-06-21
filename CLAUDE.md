@@ -13,6 +13,7 @@ At the start of a session, read:
 @_claude/config/model-selection.md
 @_claude/config/obsidian-rules.md
 @_claude/config/knowledge-layer.md
+@_claude/config/raw-captures.md
 @_claude/config/vault-structure.md
 @_claude/config/git-sync.md
 @_claude/config/connectors.md
