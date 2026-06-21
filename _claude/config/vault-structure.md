@@ -11,12 +11,13 @@ vault/
 ├── examples/        # Fake examples only
 ├── templates/       # Public-facing starter templates
 ├── docs/            # Human-readable guides
+├── RAW/             # Source captures from Obsidian Web Clipper or similar tools
 ├── shared/knowledge/    # Durable systems, decisions, solutions, concepts
 ├── business/projects/   # Active projects
 ├── business/tasks/      # Flat task store: open, in-progress, done, cancelled
 ├── business/work-logs/  # Daily or session logs
 ├── business/meetings/   # Meeting notes
-├── business/inbox/      # Raw intake for later triage
+├── business/inbox/      # Operational intake for later triage
 ├── business/runbooks/   # Step-by-step procedures
 ├── business/people/     # Contact and stakeholder notes
 ├── business/organizations/ # Organization notes
@@ -30,6 +31,14 @@ vault/
 
 This repository should remain public-safe. Use fake examples only. Do not add real personal,
 business, customer, employee, legal, medical, financial, regulated, or secret information.
+
+## RAW captures
+
+Use `RAW/` for captured source material from Obsidian Web Clipper or similar tools. This includes
+articles, YouTube captures, PDFs, transcripts, audio messages, and other external source evidence.
+Process these files with `business/runbooks/process-raw-captures.md`.
+
+`RAW/` is source intake. `business/inbox/` is operational intake.
 
 ## Projects
 

@@ -14,6 +14,7 @@ Start with:
 - `business/tasks/` for actionable work.
 - `business/meetings/` for notes and decisions.
 - `business/runbooks/` for procedures.
+- `RAW/` for source captures before processing.
 - `shared/knowledge/` for durable systems, decisions, solutions, and concepts.
 - `shared/gotchas.md` for failures and surprises.
 
@@ -25,6 +26,7 @@ Start with:
 - Runbooks and operating procedures.
 - Meeting summaries and action items.
 - Links to official systems of record.
+- Source captures that are safe for the repository audience, staged first in `RAW/`.
 - Lessons learned and reusable explanations.
 - Fake examples in the public template.
 

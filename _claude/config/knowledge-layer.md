@@ -25,6 +25,17 @@ link to external docs instead.
 
 ## Workflows
 
+### On RAW capture ingest
+1. Read `business/runbooks/process-raw-captures.md`.
+2. Preserve the source under `RAW/`; do not replace the raw capture with a summary.
+3. Classify the source: article, YouTube capture, audio message, PDF/document, note, or unknown.
+4. Transcribe or extract text before synthesizing audio, video, or binary documents.
+5. Decide whether the capture adds durable knowledge or only operational follow-up.
+6. Create or update the smallest useful `shared/knowledge/` page(s).
+7. Update `shared/knowledge/index.md`.
+8. Append to `shared/knowledge/log.md`.
+9. Link the raw capture or companion processing note to every knowledge page it fed.
+
 ### On ingest (processing inbox items)
 1. Read the source.
 2. Decide which knowledge type(s) it feeds.

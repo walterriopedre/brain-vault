@@ -13,7 +13,8 @@ before saving a note.
 - People mentioned by name → `[[business/people/<person-file>|<Person Name>]]`
 - Projects referenced → `[[business/projects/<project-slug>/README|<Project Name>]]`
 - Runbooks cited → `[[business/runbooks/<runbook-file>|<Runbook Name>]]`
-- Sources (emails, meetings, reports) → `[[business/inbox/<source-file>|<Source Name>]]`
+- Captured source files → `[[RAW/<source-file>|<Source Name>]]`
+- Operational source notes such as requests, meetings, and reports → `[[business/inbox/<source-file>|<Source Name>]]`
 - Organizations → `[[business/organizations/<organization-file>|<Organization Name>]]`
 
 ### Before finalizing any write
